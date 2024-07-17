@@ -1,5 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+/* type User = {
+  userid:string;
+  avaterimg:string;
+  name:string;
+} */
+
+interface User{
+  id:string;
+  avatar:string;
+  name:string;
+}
 
 @Component({
   selector: 'app-user-detail',
@@ -10,19 +21,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class UserDetailComponent {
 
-  @Input({required: true}) userid!: string;
-  @Input({required: true}) avatarImg!: string ;
-  @Input({required: true}) name!: string ;
+  @Input({required: true}) user!: User;
   @Output() select = new EventEmitter();
 
   onUserClick(){
-    console.log("Clieked inside user-detail component... " +this.name);
-    this.select.emit(this.userid);
+    console.log("Clieked inside user-detail component... " +this.user.name);
+    this.select.emit(this.user.id);
 
   }
 
   get imagePath(){
-    return '../../assets/users/' + this.avatarImg ;
+    return '../../assets/users/' + this.user.avatar ;
   }
 
 }
