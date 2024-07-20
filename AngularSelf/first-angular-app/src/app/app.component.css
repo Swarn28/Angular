@@ -32,3 +32,8 @@ ul {
     flex-direction: column;
   }
 }
+
+h3 {
+  width: 55%;
+  overflow-wrap: break-word;
+}

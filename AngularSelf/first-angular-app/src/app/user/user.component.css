@@ -2,7 +2,7 @@ div {
   border-radius: 8px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 500px; /* Set the desired width */
+  width: 350px; /* Set the desired width */
 }
 
 button {
@@ -15,8 +15,8 @@ button {
   border: none;
   font: inherit;
   cursor: pointer;
-  width: 100%;
-  min-width: 10rem;
+  width: 40%;
+  min-width: 20rem;
   text-align: left;
 }
 
@@ -39,4 +39,9 @@ span {
   padding: 0;
   font-size: 0.8rem;
   font-weight: normal;
+}
+
+h3 {
+  width: 55%;
+  overflow-wrap: break-word;
 }
