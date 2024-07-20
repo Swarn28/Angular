@@ -1,11 +1,13 @@
 #tasks {
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   max-height: 60vh;
   overflow: auto;
   background-color: #3a2c54;
+  width: 120%;
+  scrollbar-width: thin;
+  scrollbar-color: #c4b2b2 #331157;
 }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -50,6 +52,11 @@ ul {
   gap: 1rem;
   max-height: 50vh;
   overflow: auto;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c4b2b2 #331157;
 }
 
 @media (min-width: 768px) {

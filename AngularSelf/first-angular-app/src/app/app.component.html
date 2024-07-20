@@ -18,7 +18,7 @@
   </ul>
 
   @if (printName!="") {
-    <app-tasks [selectedId]="printName"></app-tasks>
+    <app-tasks [selectedId]="selectedId" [selectedName]="printName"></app-tasks>
   }
   @else {
     <p>Select User to see the tasks...</p>
