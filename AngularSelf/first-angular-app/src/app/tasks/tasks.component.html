@@ -4,15 +4,21 @@
       {{ selectedName }}
     </h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onAddNewTask()">Add Task</button>
     </menu>
   </header>
   <ul  class="custom-scrollbar">
     @for(task of tasks; track task.id){
       <li>
-        <app-task (userNameEvent)="demoOuputEvent($event)" [selectedId]="selectedId" [task]="task">Tasks here</app-task>
+        <app-task [selectedId]="selectedId" [task]="task"
+        (isComplete)="onComplete($event)">Tasks here</app-task>
       </li>
     }
-
   </ul>
 </section>
+
+@if(isNewTaskClicked){
+  <app-new-task (cancel)="onCancelClicked()" (addNewTask)="addNewTask($event)"></app-new-task>
+}
+
+

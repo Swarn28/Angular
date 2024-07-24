@@ -17,6 +17,7 @@ import { type User } from './userDetail.model';
 export class UserDetailComponent {
 
   @Input({required: true}) user!: User;
+  @Input({required:true}) isSelected!: boolean;
   @Output() select = new EventEmitter();
 
   onUserClick(){

@@ -1,17 +1,21 @@
 import { DUMMY_USERS } from './../dummy-users';
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
+import { NewTaskComponent } from "./new-task/new-task.component";
+import { newTask } from './new-task/new-task.model';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
   @Input({required: true}) selectedId!: string;
   @Input({required:true}) selectedName!: string;
+
+  isNewTaskClicked= false;
 
   tasks = [
     { id: 't1',
@@ -32,7 +36,27 @@ export class TasksComponent {
       dueDate : '2024-8-6'}
   ]
 
-  demoOuputEvent(userId: Number){
-    console.log("Recevied event from child to the parent, for userId: " +userId);
+  onAddNewTask(){
+    this.isNewTaskClicked = true;
   }
+
+  onCancelClicked(){
+    this.isNewTaskClicked = false;
+  }
+
+  onComplete(id: string){
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  addNewTask(recvdTask: newTask){
+      this.tasks.push({
+        id:'123',
+        summary: recvdTask.Summary,
+        tittle: recvdTask.Title,
+        dueDate: recvdTask.Date,
+        userId: this.selectedId,
+      });
+      this.isNewTaskClicked = false;
+  }
+
 }

@@ -17,7 +17,7 @@ import { TasksComponent } from "./tasks/tasks.component";
 })
 export class AppComponent {
   title = 'first-angular-app';
-  selectedId:string="";
+  selectedId!: string;
   printName:string="";
 
   users = DUMMY_USERS;

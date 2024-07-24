@@ -10,6 +10,7 @@
     @for(user of users; track user.id){
       <li>
         <app-user-detail
+          [isSelected]="selectedId === user.id"
           [user]="user"
           (select)="onUserSelected($event)"
         ></app-user-detail>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { type Task } from './task.model';
 
+
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -12,10 +13,11 @@ export class TaskComponent {
     @Input({required: true}) task!: Task;
     @Input({required: true}) selectedId!: string;
 
-    @Output() userNameEvent = new EventEmitter();
 
-    eventEmit_UserNameEvent(){
-      this.userNameEvent.emit(this.selectedId);
+    @Output() isComplete = new EventEmitter<string>();
+
+    onCompleteButtonClick(){
+      this.isComplete.emit(this.task.id);
     }
 
 }
