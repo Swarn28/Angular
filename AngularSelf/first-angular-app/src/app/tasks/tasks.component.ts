@@ -31,4 +31,8 @@ export class TasksComponent {
       summary: 'Eating healthy food is good',
       dueDate : '2024-8-6'}
   ]
+
+  demoOuputEvent(userId: Number){
+    console.log("Recevied event from child to the parent, for userId: " +userId);
+  }
 }

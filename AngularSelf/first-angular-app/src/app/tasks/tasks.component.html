@@ -10,7 +10,7 @@
   <ul  class="custom-scrollbar">
     @for(task of tasks; track task.id){
       <li>
-        <app-task [selectedId]="selectedId" [task]="task">Tasks here</app-task>
+        <app-task (userNameEvent)="demoOuputEvent($event)" [selectedId]="selectedId" [task]="task">Tasks here</app-task>
       </li>
     }
 
