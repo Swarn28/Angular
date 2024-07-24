@@ -50,13 +50,18 @@ export class TasksComponent {
 
   addNewTask(recvdTask: newTask){
       this.tasks.push({
-        id:'123',
+        id:this.createRandomId(),
         summary: recvdTask.Summary,
         tittle: recvdTask.Title,
         dueDate: recvdTask.Date,
         userId: this.selectedId,
       });
       this.isNewTaskClicked = false;
+  }
+
+  createRandomId(): string{
+    const randomNumber = Math.floor(Math.random() * 900) + 100;
+    return randomNumber.toString();
   }
 
 }
