@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from "./new-task/new-task.component";
 import { newTask } from './new-task/new-task.model';
+import { TaskService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -16,25 +17,18 @@ export class TasksComponent {
   @Input({required:true}) selectedName!: string;
 
   isNewTaskClicked= false;
+  private taskService: TaskService;
 
-  tasks = [
-    { id: 't1',
-      userId: 'u1',
-      tittle: 'Master Angular',
-      summary: 'Learn Angular basics...',
-      dueDate : '2024-7-5'
-    },
-    { id: 't2',
-      userId: 'u3',
-      tittle: 'Play badminton',
-      summary: 'Playing is good',
-      dueDate : '2024-10-15'},
-    { id: 't3',
-      userId: 'u3',
-      tittle: 'Eat Healthy',
-      summary: 'Eating healthy food is good',
-      dueDate : '2024-8-6'}
-  ]
+  tasks: any[] = [];
+
+  constructor(taskService:TaskService){
+    this.taskService = taskService;
+  }
+
+
+  ngOnInit(){
+    this.tasks = this.taskService.getAllTasks();
+  }
 
   onAddNewTask(){
     this.isNewTaskClicked = true;
@@ -45,17 +39,11 @@ export class TasksComponent {
   }
 
   onComplete(id: string){
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.tasks = this.taskService.removeTask(id);
   }
 
   addNewTask(recvdTask: newTask){
-      this.tasks.push({
-        id:this.createRandomId(),
-        summary: recvdTask.Summary,
-        tittle: recvdTask.Title,
-        dueDate: recvdTask.Date,
-        userId: this.selectedId,
-      });
+      this.taskService.addTask(recvdTask,this.selectedId);
       this.isNewTaskClicked = false;
   }
 

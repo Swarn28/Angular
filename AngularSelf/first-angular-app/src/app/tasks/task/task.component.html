@@ -1,10 +1,12 @@
+<app-card>
 @if(task.userId === selectedId){
 <article>
   <h2>{{ task.tittle }}</h2>
-  <time>{{ task.dueDate }}</time>
+  <time>{{ task.dueDate  | date:'fullDate' }}</time>
   <p>{{ task.summary }}</p>
   <p class="actions">
     <button (click)="onCompleteButtonClick()">Complete</button>
   </p>
 </article>
 }
+</app-card>
