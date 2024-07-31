@@ -1,3 +1,4 @@
+<div class="backdrop" (click)="onCancel()"></div>
 <dialog open class="move-right">
   <h2>Add Parameters, Please Provide Inputs for the following:</h2>
   <form (ngSubmit)="onSubmit()">
@@ -50,6 +51,9 @@
     <p class="actions">
       <button type="button" (click)="onCancel()">Cancel</button>
       <button type="submit">Run</button>
+      @if (isRunClicked) {
+        <button type="submit">View</button>
+      }
     </p>
   </form>
 </dialog>

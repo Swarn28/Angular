@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class MeterInstallationTaskComponent {
 
+  isRunClicked = false;
+
   @Output() cancelled = new EventEmitter<void>();
 
   inputs: InputParams ={
@@ -26,6 +28,7 @@ export class MeterInstallationTaskComponent {
   }
 
   onSubmit(){
+    this.isRunClicked = true;
     console.log("value of sender id is: " +this.inputs.count);
   }
 
