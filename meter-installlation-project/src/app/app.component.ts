@@ -29,4 +29,8 @@ export class AppComponent {
     }
   }
 
+  onCancelMeterInstallation(){
+    this.isMeterInstallationClicked= false;
+  }
+
 }

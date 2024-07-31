@@ -1,5 +1,5 @@
 .clickable-button {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4dd333; /* Green background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 15px 32px; /* Some padding */
@@ -19,7 +19,22 @@
 }
 
 .move-right {
-  margin-left: 30px;
-  margin-right: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding: 20px;
+}
+
+h3{
+  color: black;
+}
+
+.text-style{
+  font-weight: bold;
+  color: black;
+}
+
+.background-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Use 'cover' if you want the image to cover the entire background */
 }

@@ -26,6 +26,8 @@ label {
   font-weight: bold;
   font-size: 0.85rem;
   color: #080708;
+  box-sizing: border-box;
+  min-width: 100px;
 }
 
 dialog {

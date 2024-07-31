@@ -4,24 +4,55 @@
 
 <dialog open class="move-right">
   <h2>Add Parameters</h2>
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <p>
-      <label for="app.PROVIDER">app.PROVIDER</label>
-      <input type="text" id="app.PROVIDER" name="app.PROVIDER"/>
+      <label for="provider">Provider</label>
+      <input type="text" id="provider" name="provider" [(ngModel)]="inputs.provider"/>
     </p>
 
     <p>
-      <label for="summary">Summary</label>
-      <input type="text" id="summary" name="summary"/>
+      <label for="senderId">SenderID</label>
+      <input type="text" id="senderId" name="senderId" [(ngModel)]="inputs.senderId"/>
     </p>
 
     <p>
-      <label for="due-date">Due Date</label>
-      <input type="date" id="due-date" name="due-date"/>
+      <label for="industry">Industry</label>
+      <input type="text" id="industry" name="industry" [(ngModel)]="inputs.industry"/>
+    </p>
+
+    <p>
+      <label for="meteringType">Metering Type</label>
+      <input type="text" id="meteringType" name="meteringType" [(ngModel)]="inputs.meteringType"/>
+    </p>
+
+    <p>
+      <label for="start-date">Start Date</label>
+      <input type="text" id="start-date" name="start-date" placeholder="yyyy-MM-dd" [(ngModel)]="inputs.startDate"/>
+    </p>
+
+    <p>
+      <label for="create-date">Create Date</label>
+      <input type="text" id="create-date" name="create-date" placeholder="yyyy-MM-dd'T'HH:mm:ss'Z'" [(ngModel)]="inputs.createDate"/>
+    </p>
+
+
+    <p>
+      <label for="obis">OBIS</label>
+      <input type="text" id="obis" name="obis" [(ngModel)]="inputs.obis"/>
+    </p>
+
+    <p>
+      <label for="obis2">OBIS2</label>
+      <input type="text" id="obis2" name="obis2" [(ngModel)]="inputs.obis2"/>
+    </p>
+
+    <p>
+      <label for="count">Count</label>
+      <input type="text" id="count" name="count" [(ngModel)]="inputs.count"/>
     </p>
 
     <p class="actions">
-      <button type="button">Cancel</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
       <button type="submit">Run</button>
     </p>
   </form>

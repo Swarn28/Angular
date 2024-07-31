@@ -1,13 +1,22 @@
 <app-header></app-header>
 
-@for(task of tasks; track task.id){
-  <button class="clickable-button move-right" (click)="enableOption(task.id)">{{task.name}}</button>
-}
+<div class="text-style">
+
+ <!--  <img src="../assets/MDMS_Logo.png" alt="Background Image" class="background-image"> -->
+
+<div>
+  @for(task of tasks; track task.id){
+    <button class="clickable-button move-right" (click)="enableOption(task.id)">{{task.name}}</button>
+  }
+</div>
+
 
 @if(isMeterInstallationClicked){
-  <app-meter-installation-task></app-meter-installation-task>
+
+    <app-meter-installation-task (cancelled)="onCancelMeterInstallation()" ></app-meter-installation-task>
 
 }
 @else {
-  <h3 class="move-right">Please select some option !!! </h3>
+    <h3 class="move-right">Please select some option !!! </h3>
 }
+</div>
