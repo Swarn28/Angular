@@ -2,6 +2,7 @@
   margin-left: 30px;
   margin-right: 50px;
   padding: 20px;
+  background-color: rgba(13, 221, 23, 0.95);
 }
 
 form p {
@@ -39,7 +40,7 @@ dialog {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 1rem;
-  /* top: 5rem; */
+  top: 15rem;
 }
 
 button {
