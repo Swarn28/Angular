@@ -17,3 +17,9 @@
 .clickable-button:hover {
   background-color: #45a049; /* Darker green */
 }
+
+.move-right {
+  margin-left: 30px;
+  margin-right: 50px;
+  padding: 20px;
+}

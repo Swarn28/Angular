@@ -13,6 +13,8 @@ import { HeaderComponent } from "./header/header.component";
 export class AppComponent {
   title = 'meter-installlation-project';
   isMeterInstallationClicked: boolean = false;
+  isEnegizationClicked: boolean = false;
+  isDeEnergizationClicked: boolean = false;
 
   tasks = [{name:'Meter Installation' , id:'1'},
     {name:'Energization' , id:'2'},

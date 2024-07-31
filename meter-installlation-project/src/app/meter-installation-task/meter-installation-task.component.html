@@ -1,1 +1,28 @@
-<p>meter-installation-task works!</p>
+<div class="move-right">
+  <p>Please Provide Inputs for the following: </p>
+</div>
+
+<dialog open class="move-right">
+  <h2>Add Parameters</h2>
+  <form>
+    <p>
+      <label for="app.PROVIDER">app.PROVIDER</label>
+      <input type="text" id="app.PROVIDER" name="app.PROVIDER"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <input type="text" id="summary" name="summary"/>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date"/>
+    </p>
+
+    <p class="actions">
+      <button type="button">Cancel</button>
+      <button type="submit">Run</button>
+    </p>
+  </form>
+</dialog>

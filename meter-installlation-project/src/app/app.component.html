@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 @for(task of tasks; track task.id){
-  <button class="clickable-button" (click)="enableOption(task.id)">{{task.name}}</button>
+  <button class="clickable-button move-right" (click)="enableOption(task.id)">{{task.name}}</button>
 }
 
 @if(isMeterInstallationClicked){
@@ -9,5 +9,5 @@
 
 }
 @else {
-  <h3>Please select some option !!! </h3>
+  <h3 class="move-right">Please select some option !!! </h3>
 }

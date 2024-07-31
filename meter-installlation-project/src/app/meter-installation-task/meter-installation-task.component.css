@@ -1,0 +1,90 @@
+.move-right {
+  margin-left: 30px;
+  margin-right: 50px;
+  padding: 20px;
+}
+
+form p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+
+input,
+textarea {
+  display: block;
+  margin-top: 0.5em;
+  margin-left: .5em;
+  border: medium groove;
+  height: 2.5em;
+  width: 35em;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #080708;
+}
+
+dialog {
+  width: 90%;
+  max-width: 70rem;
+  background-color: #42b633;
+  border-radius: 6px;
+  border:  medium groove green;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  padding: 1rem;
+  /* top: 5rem; */
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  padding: 0.35rem 1.25rem;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+button[type="button"] {
+  background-color: #44c24c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  height: 2.5em;
+  width: 7.5em;
+  margin-top: 2em;
+  border: none;
+  border-radius: 12px;
+}
+
+button:hover,
+button:active {
+  background-color: #475e4c;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+button[type="button"]:hover,
+button[type="button"]:active {
+  color: #d0c2e1;
+}
+
+button[type="submit"] {
+  background-color: #44c24c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  margin-left: .5em;
+  height: 2.5em;
+  width: 7.5em;
+  margin-top: 2em;
+  border: none;
+  border-radius: 12px;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:active {
+  background-color: #475e4c;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
