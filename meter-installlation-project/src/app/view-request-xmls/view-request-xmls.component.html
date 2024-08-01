@@ -1,3 +1,4 @@
+<div class="custom-scrollbar">
 <dialog open class="move-right">
 
   <h1>{{taskName}} endpoints</h1>
@@ -9,17 +10,16 @@
     }
   </div>
 
-  <br>
-  <br>
   <h1>{{taskName}} XMLs</h1>
   <div>
+  <ul class="custom-scrollbar">
   @for(content of fileContents; track content){
-    <ul>
       <li>{{content}}</li>
-    </ul>
   }
+</ul>
 </div>
 
 <button class="closeButton" type="button" (click)="onCloseButton()">Close</button>
 
 </dialog>
+</div>
