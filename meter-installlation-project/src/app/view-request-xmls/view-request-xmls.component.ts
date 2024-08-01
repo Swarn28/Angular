@@ -200,8 +200,6 @@ export class ViewRequestXmlsComponent {
     this.fileContents.push(step3);
     this.fileContents.push(step4);
 
-    console.log("fileContent is : "+this.fileContents.length);
-
   }
 
   onCloseButton(){

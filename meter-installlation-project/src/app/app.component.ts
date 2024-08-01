@@ -30,7 +30,6 @@ export class AppComponent {
   ];
 
   enableOption(id:string){
-    console.log("inside enableOption");
     if(id==='1'){
       this.isMeterInstallationClicked = true;
     }
@@ -70,7 +69,6 @@ export class AppComponent {
   }
 
   onViewXml(taskName: string){
-    console.log("Recevied view xml request for: "+taskName);
     this.viewXmlTaskName = taskName;
     this.isViewXmlsEnabled = true;
   }

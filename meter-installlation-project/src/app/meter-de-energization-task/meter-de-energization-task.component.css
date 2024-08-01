@@ -60,7 +60,7 @@ button[type="button"] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   height: 2.5em;
-  width: 7.5em;
+  width: 10.5em;
   margin-top: 2em;
   border: none;
   border-radius: 12px;
@@ -84,7 +84,7 @@ button[type="submit"] {
   transition: all 0.3s ease;
   margin-left: .5em;
   height: 2.5em;
-  width: 7.5em;
+  width: 10.5em;
   margin-top: 2em;
   border: none;
   border-radius: 12px;
