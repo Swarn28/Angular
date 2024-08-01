@@ -1,0 +1,60 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open class="move-right">
+  <h1>Meter Energization</h1>
+  <h2>Add Parameters, Please Provide Inputs for the following:</h2>
+  <form>
+    <p>
+      <label for="provider">Provider</label>
+      <input type="text" id="provider" name="provider"/>
+    </p>
+
+    <p>
+      <label for="senderId">SenderID</label>
+      <input type="text" id="senderId" name="senderId"/>
+    </p>
+
+    <p>
+      <label for="industry">Industry</label>
+      <input type="text" id="industry" name="industry"/>
+    </p>
+
+    <p>
+      <label for="meteringType">Metering Type</label>
+      <input type="text" id="meteringType" name="meteringType"/>
+    </p>
+
+    <p>
+      <label for="start-date">Start Date</label>
+      <input type="text" id="start-date" name="start-date" placeholder="yyyy-MM-dd"/>
+    </p>
+
+    <p>
+      <label for="create-date">Create Date</label>
+      <input type="text" id="create-date" name="create-date" placeholder="yyyy-MM-dd'T'HH:mm:ss'Z'"/>
+    </p>
+
+
+    <p>
+      <label for="obis">OBIS</label>
+      <input type="text" id="obis" name="obis"/>
+    </p>
+
+    <p>
+      <label for="obis2">OBIS2</label>
+      <input type="text" id="obis2" name="obis2"/>
+    </p>
+
+    <p>
+      <label for="count">Count</label>
+      <input type="text" id="count" name="count"/>
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="submit" (click)="onSubmit()">Run</button>
+      @if(enableViewButton){
+        <button type="button">View</button>
+      }
+    </p>
+  </form>
+</dialog>

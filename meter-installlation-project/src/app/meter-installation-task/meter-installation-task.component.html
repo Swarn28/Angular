@@ -1,5 +1,6 @@
 <div class="backdrop" (click)="onCancel()"></div>
 <dialog open class="move-right">
+  <h1>Meter Installation</h1>
   <h2>Add Parameters, Please Provide Inputs for the following:</h2>
   <form (ngSubmit)="onSubmit()">
     <p>
@@ -52,8 +53,13 @@
       <button type="button" (click)="onCancel()">Cancel</button>
       <button type="submit">Run</button>
       @if (isRunClicked) {
-        <button type="submit">View</button>
+        <button type="button">View</button>
       }
     </p>
+
+    <p>
+      <button class="requestXmlButton" type="button" (click)="onViewXml()">View Request Xmls</button>
+    </p>
+
   </form>
 </dialog>

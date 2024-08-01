@@ -6,17 +6,28 @@
 
 <div>
   @for(task of tasks; track task.id){
-    <button class="clickable-button move-right" (click)="enableOption(task.id)">{{task.name}}</button>
+    <button class="clickable-button move-right" [class.active] = "task.id === idSelected" (click)="enableOption(task.id)">{{task.name}}</button>
   }
 </div>
 
 
 @if(isMeterInstallationClicked){
 
-    <app-meter-installation-task (cancelled)="onCancelMeterInstallation()" ></app-meter-installation-task>
+    <app-meter-installation-task (cancelled)="onCancelMeterInstallation()" (viewXmlEvent)="onViewXml($event)" ></app-meter-installation-task>
 
+}
+@else if (isDeEnergizationClicked) {
+  <app-meter-de-energization-task (cancelEvent)="onDeEnergizationCancel()"></app-meter-de-energization-task>
+}
+@else if (isEnegizationClicked) {
+  <app-meter-energization-task (emitCancelEvent)="onEnergizationCancel()"></app-meter-energization-task>
 }
 @else {
     <h3 class="move-right">Please select some option !!! </h3>
 }
+
+@if(isViewXmlsEnabled){
+  <app-view-request-xmls class="appRequestXml" [taskName]="viewXmlTaskName" (closeButtonEvent)="onviewXmlClose()"></app-view-request-xmls>
+}
+
 </div>

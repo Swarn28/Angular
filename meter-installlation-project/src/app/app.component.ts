@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MeterInstallationTaskComponent } from "./meter-installation-task/meter-installation-task.component";
 import { HeaderComponent } from "./header/header.component";
+import { MeterEnergizationTaskComponent } from './meter-energization-task/meter-energization-task.component';
+import { MeterDeEnergizationTaskComponent } from './meter-de-energization-task/meter-de-energization-task.component';
+import { ViewRequestXmlsComponent } from "./view-request-xmls/view-request-xmls.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MeterInstallationTaskComponent, HeaderComponent],
+  imports: [RouterOutlet, MeterInstallationTaskComponent, HeaderComponent,
+    MeterEnergizationTaskComponent, MeterDeEnergizationTaskComponent, ViewRequestXmlsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -15,6 +19,10 @@ export class AppComponent {
   isMeterInstallationClicked: boolean = false;
   isEnegizationClicked: boolean = false;
   isDeEnergizationClicked: boolean = false;
+  isViewXmlsEnabled: boolean = false;
+  viewXmlTaskName: string='';
+
+  idSelected!: string;
 
   tasks = [{name:'Meter Installation' , id:'1'},
     {name:'Energization' , id:'2'},
@@ -25,12 +33,50 @@ export class AppComponent {
     console.log("inside enableOption");
     if(id==='1'){
       this.isMeterInstallationClicked = true;
-
     }
+    if(id==='2'){
+      this.isEnegizationClicked = true;
+    }
+    if(id==='3'){
+      this.isDeEnergizationClicked = true;
+    }
+
+    this.checkSelected(id);
+  }
+
+  checkSelected(id:string){
+    this.idSelected = id;
   }
 
   onCancelMeterInstallation(){
     this.isMeterInstallationClicked= false;
+    this.idSelected='';
+    this.isViewXmlsEnabled = false;
+
+  }
+
+  onEnergizationCancel(){
+    this.isEnegizationClicked = false;
+    this.idSelected='';
+    this.isViewXmlsEnabled = false;
+
+  }
+
+  onDeEnergizationCancel(){
+    this.isDeEnergizationClicked = false;
+    this.idSelected='';
+    this.isViewXmlsEnabled = false;
+
+  }
+
+  onViewXml(taskName: string){
+    console.log("Recevied view xml request for: "+taskName);
+    this.viewXmlTaskName = taskName;
+    this.isViewXmlsEnabled = true;
+  }
+
+  onviewXmlClose(){
+    this.isViewXmlsEnabled = false;
   }
 
 }

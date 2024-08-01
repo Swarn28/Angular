@@ -35,7 +35,6 @@ label {
 }
 
 dialog {
-  width: 90%;
   max-width: 70rem;
   background-color: #000000;
   border-radius: 6px;
@@ -43,7 +42,9 @@ dialog {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 1rem;
-  top: 15rem;
+  top: 0rem;
+  width: 900px;
+  font-size: 1.2rem;
 }
 
 button {
@@ -110,9 +111,9 @@ button[type="submit"]:active {
   height: 100vh;
 }
 
-.requestXmlButton{
+.closeButton{
   position: absolute;
-  top: 84%;
+  top: 0;
   left: 70%;
 }
 

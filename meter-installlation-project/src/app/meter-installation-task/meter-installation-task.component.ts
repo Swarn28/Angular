@@ -14,6 +14,7 @@ export class MeterInstallationTaskComponent {
   isRunClicked = false;
 
   @Output() cancelled = new EventEmitter<void>();
+  @Output() viewXmlEvent = new EventEmitter<string>();
 
   inputs: InputParams ={
     provider: '',
@@ -29,10 +30,13 @@ export class MeterInstallationTaskComponent {
 
   onSubmit(){
     this.isRunClicked = true;
-    console.log("value of sender id is: " +this.inputs.count);
   }
 
   onCancel(){
     this.cancelled.emit();
+  }
+
+  onViewXml(){
+    this.viewXmlEvent.emit("Meter Installation");
   }
 }

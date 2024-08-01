@@ -1,0 +1,25 @@
+<dialog open class="move-right">
+
+  <h1>{{taskName}} endpoints</h1>
+  <div>
+    @for(endpoint of endPointsUsed; track endpoint){
+      <ul>
+        <li>{{endpoint}}</li>
+      </ul>
+    }
+  </div>
+
+  <br>
+  <br>
+  <h1>{{taskName}} XMLs</h1>
+  <div>
+  @for(content of fileContents; track content){
+    <ul>
+      <li>{{content}}</li>
+    </ul>
+  }
+</div>
+
+<button class="closeButton" type="button" (click)="onCloseButton()">Close</button>
+
+</dialog>
