@@ -2,7 +2,7 @@ import { Component, Output,EventEmitter, inject } from '@angular/core';
 import { InputParams } from './meter-installation-model';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-meter-installation-task',
@@ -55,27 +55,37 @@ export class MeterInstallationTaskComponent {
     this.isRunning = true;
 
     if(this.inputs.provider === ""){
-      this.httpClient.post('http://localhost:8080/meterAction/v1/beginTask',{},{responseType: 'text'}).subscribe({
-      next: (response) => {
-        console.log("response is: " +response);
-      },
-      complete: () =>{
-        this.isRunning = false;
-        this.isErrored = false;
-        this.isCompleted = true;
-      },
-      error: (error) =>{
-        this.isRunning = false;
-        this.isCompleted = false;
-        this.isErrored = true;
-        console.log("error message is: " +error.message);
-        console.log(error);
-        //alert("Some Error Occured, please check console logs.");
-      }
-    });}
+      this.sendPlainMeterInstall(false);
+    }
+    else{
+      this.sendPlainMeterInstall(true);
+    }
 
+  }
 
+  private sendPlainMeterInstall(isPara:boolean) {
+    {
+      let requestBody = isPara ? this.inputs : {};
+      let url = isPara ? 'http://localhost:8080/meterAction/v1/beginTaskParameterised' : 'http://localhost:8080/meterAction/v1/beginTask';
 
+      this.httpClient.post(url, requestBody, { responseType: 'text' }).subscribe({
+        next: (response) => {
+          console.log("response is: " + response);
+        },
+        complete: () => {
+          this.isRunning = false;
+          this.isErrored = false;
+          this.isCompleted = true;
+        },
+        error: (error) => {
+          this.isRunning = false;
+          this.isCompleted = false;
+          this.isErrored = true;
+          console.log("error message is: " + error.message);
+          console.log(error);
+        }
+      });
+    }
   }
 
   onCancel(){
