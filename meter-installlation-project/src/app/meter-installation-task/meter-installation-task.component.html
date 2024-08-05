@@ -50,9 +50,9 @@
     </p>
 
     <p class="actions">
-      <button type="button" (click)="onCancel()">Cancel</button>
-      <button type="submit">Run</button>
-      @if (isRunClicked) {
+      <button type="button" (click)="onCancel()">Close</button>
+      <button [disabled]="isRunning" type="submit">Run</button>
+      @if (isCompleted) {
         <button type="button">View</button>
       }
     </p>
@@ -60,6 +60,20 @@
     <p>
       <button class="requestXmlButton" type="button" (click)="onViewXml()">View Request Xmls</button>
     </p>
+
+    <div class="status-message">
+    @if(isRunning){
+      <p>Running...</p>
+    }
+
+    @if(isCompleted){
+      <p>Completed</p>
+    }
+
+    @if(isErrored){
+      <p>Some Error Occured, please check console logs.</p>
+    }
+  </div>
 
   </form>
 </dialog>

@@ -14,6 +14,14 @@ form p {
   margin-bottom: 1em;
 }
 
+.status-message{
+  font-size: 30px;
+  font-style: italic;
+  position: absolute;
+  top: 38%;
+  left: 67%;
+  color: red;
+}
 
 input,
 textarea {
@@ -36,14 +44,15 @@ label {
 
 dialog {
   width: 90%;
-  max-width: 70rem;
+  max-width: 60rem;
   background-color: #000000;
   border-radius: 6px;
   border:  medium groove green;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 1rem;
-  top: 15rem;
+  top: 12.5rem;
+  max-height: min-content;
 }
 
 button {
@@ -91,6 +100,21 @@ button[type="submit"] {
   border-radius: 12px;
 }
 
+button[type="submit"]:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  /* Disable hover effect when button is disabled */
+  transition: none;
+}
+
+/* Ensure hover and active styles are not applied when disabled */
+button[type="submit"]:disabled:hover,
+button[type="submit"]:disabled:active {
+  background-color: gray; /* Same as disabled state */
+  box-shadow: none; /* Remove shadow */
+  color: lightgray; /* Ensure consistent color */
+}
+
 button[type="submit"]:hover,
 button[type="submit"]:active {
   background-color: #475e4c;
@@ -113,8 +137,10 @@ button[type="submit"]:active {
 .requestXmlButton{
   position: absolute;
   top: 84%;
-  left: 70%;
+  left: 60%;
 }
+
+
 
 dialog[open] {
   -webkit-animation: show 1s ease normal;

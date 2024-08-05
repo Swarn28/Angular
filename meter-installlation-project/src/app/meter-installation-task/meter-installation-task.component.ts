@@ -1,6 +1,8 @@
-import { Component, Output,EventEmitter } from '@angular/core';
+import { Component, Output,EventEmitter, inject } from '@angular/core';
 import { InputParams } from './meter-installation-model';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { response } from 'express';
 
 @Component({
   selector: 'app-meter-installation-task',
@@ -12,9 +14,13 @@ import { FormsModule } from '@angular/forms';
 export class MeterInstallationTaskComponent {
 
   isRunClicked = false;
+  isRunning = false;
+  isErrored = false;
+  isCompleted = false;
 
   @Output() cancelled = new EventEmitter<void>();
   @Output() viewXmlEvent = new EventEmitter<string>();
+  private httpClient = inject(HttpClient);
 
   inputs: InputParams ={
     provider: '',
@@ -29,7 +35,47 @@ export class MeterInstallationTaskComponent {
   }
 
   onSubmit(){
-    this.isRunClicked = true;
+    /* this.httpClient.get('http://localhost:8080/meterAction/v1/statusCheck',{ responseType: 'text' }).subscribe({
+      next: (response) =>{
+        console.log("response is : "+response);
+      },
+
+      complete: () =>{
+        this.isRunClicked = true;
+      },
+
+      error: (error) =>{
+        console.log("error message is: " +error.message);
+        console.log(error);
+      }
+    }); */
+
+    this.isErrored = false;
+    this.isCompleted = false;
+    this.isRunning = true;
+
+    if(this.inputs.provider === ""){
+      this.httpClient.post('http://localhost:8080/meterAction/v1/beginTask',{},{responseType: 'text'}).subscribe({
+      next: (response) => {
+        console.log("response is: " +response);
+      },
+      complete: () =>{
+        this.isRunning = false;
+        this.isErrored = false;
+        this.isCompleted = true;
+      },
+      error: (error) =>{
+        this.isRunning = false;
+        this.isCompleted = false;
+        this.isErrored = true;
+        console.log("error message is: " +error.message);
+        console.log(error);
+        //alert("Some Error Occured, please check console logs.");
+      }
+    });}
+
+
+
   }
 
   onCancel(){
@@ -39,4 +85,6 @@ export class MeterInstallationTaskComponent {
   onViewXml(){
     this.viewXmlEvent.emit("Meter Installation");
   }
+
+
 }
