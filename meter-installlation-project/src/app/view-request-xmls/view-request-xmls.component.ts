@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 
 @Component({
   selector: 'app-view-request-xmls',
@@ -14,6 +15,7 @@ export class ViewRequestXmlsComponent {
 
   @Input({ required: true }) taskName!: string;
   @Output() closeButtonEvent = new EventEmitter<void>();
+  private httpClient = inject(HttpClient);
 
   fileContents: string[] = [];
   endPointsUsed: string[] = [];
@@ -25,9 +27,15 @@ export class ViewRequestXmlsComponent {
     this.endPointsUsed.push("/svcs-sapAdapter/ws/smartMeterMeterReadingDocumentERPResultCreateRequestOut");
     this.endPointsUsed.push("/svcs-sapAdapter/ws/utilitiesDeviceERPSmartMeterLocationNotificationOut");
 
+    this.httpClient.get<string[]>('http://localhost:8080/meterAction/v1/getXmls').subscribe({
+      next: (response) => {
+        console.log("response is: " +response);
+        this.fileContents = response;
+      }
+    });
 
 
-    const step1 = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:n0=\"http://sap.com/xi/SAPGlobal20/Global\">" +
+    /* const step1 = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:n0=\"http://sap.com/xi/SAPGlobal20/Global\">" +
     "<soapenv:Header/>" +
     "<soapenv:Body>" +
     "<n0:UtilitiesDeviceERPSmartMeterCreateRequest>" +
@@ -199,7 +207,7 @@ export class ViewRequestXmlsComponent {
     this.fileContents.push(step2);
     this.fileContents.push(step3);
     this.fileContents.push(step4);
-
+ */
   }
 
   onCloseButton(){

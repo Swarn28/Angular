@@ -17,6 +17,7 @@ export class MeterInstallationTaskComponent {
   isRunning = false;
   isErrored = false;
   isCompleted = false;
+  installedMetersList: string[] = [];
 
   @Output() cancelled = new EventEmitter<void>();
   @Output() viewXmlEvent = new EventEmitter<string>();
@@ -68,9 +69,9 @@ export class MeterInstallationTaskComponent {
       let requestBody = isPara ? this.inputs : {};
       let url = isPara ? 'http://localhost:8080/meterAction/v1/beginTaskParameterised' : 'http://localhost:8080/meterAction/v1/beginTask';
 
-      this.httpClient.post(url, requestBody, { responseType: 'text' }).subscribe({
+      this.httpClient.post<string[]>(url, requestBody).subscribe({
         next: (response) => {
-          console.log("response is: " + response);
+          this.installedMetersList = response;
         },
         complete: () => {
           this.isRunning = false;
