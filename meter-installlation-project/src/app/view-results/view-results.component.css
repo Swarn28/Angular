@@ -29,9 +29,65 @@ dialog {
  overflow: hidden;
  padding: 1rem;
  top: 0rem;
- width: 900px;
+ width: 800px;
  font-size: 1.2rem;
  max-height: 855px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  padding: 0.35rem 1.25rem;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+button[type="button"] {
+  background-color: #44c24c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  height: 2.5em;
+  width: 10.5em;
+  margin-top: 2em;
+  border: none;
+  border-radius: 12px;
+  margin-left: .5em;
+
+}
+
+button:hover,
+button:active {
+  background-color: #475e4c;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+button[type="button"]:hover,
+button[type="button"]:active {
+  color: #d0c2e1;
+}
+
+button[type="submit"] {
+  background-color: #44c24c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  margin-left: .5em;
+  height: 2.5em;
+  width: 7.5em;
+  margin-top: 2em;
+  border: none;
+  border-radius: 12px;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:active {
+  background-color: #475e4c;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  color: #d0c2e1;
+}
+
+.view-button{
+  margin-left: 90px;
 }
 
 .closeButton{
