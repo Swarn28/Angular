@@ -53,7 +53,7 @@
       <button type="button" (click)="onCancel()">Close</button>
       <button [disabled]="isRunning" type="submit">Run</button>
       @if (isCompleted) {
-        <button type="button">View</button>
+        <button (click)="onViewResultsEnable()" type="button">View</button>
       }
     </p>
 

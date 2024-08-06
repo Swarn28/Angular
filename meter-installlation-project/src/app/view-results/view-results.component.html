@@ -1,0 +1,16 @@
+<dialog open class="move-right">
+@if(installedMetersList.length >0){
+  <div>
+    <p>Installed meters are: </p>
+    <ul>
+      @for(meter of installedMetersList; track meter){
+        <li>{{meter}}</li>
+      }
+    </ul>
+  </div>
+
+  <button class="closeButton" type="button" (click)="onCloseButton()">Close</button>
+
+}
+</dialog>
+

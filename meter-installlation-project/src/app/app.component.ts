@@ -5,12 +5,13 @@ import { HeaderComponent } from "./header/header.component";
 import { MeterEnergizationTaskComponent } from './meter-energization-task/meter-energization-task.component';
 import { MeterDeEnergizationTaskComponent } from './meter-de-energization-task/meter-de-energization-task.component';
 import { ViewRequestXmlsComponent } from "./view-request-xmls/view-request-xmls.component";
+import { ViewResultsComponent } from './view-results/view-results.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MeterInstallationTaskComponent, HeaderComponent,
-    MeterEnergizationTaskComponent, MeterDeEnergizationTaskComponent, ViewRequestXmlsComponent],
+    MeterEnergizationTaskComponent, MeterDeEnergizationTaskComponent, ViewRequestXmlsComponent, ViewResultsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,6 +22,8 @@ export class AppComponent {
   isDeEnergizationClicked: boolean = false;
   isViewXmlsEnabled: boolean = false;
   viewXmlTaskName: string='';
+  installedMetersList: string[] = [];
+  isViewResultsEnabled: boolean = false;
 
   idSelected!: string;
 
@@ -75,6 +78,19 @@ export class AppComponent {
 
   onviewXmlClose(){
     this.isViewXmlsEnabled = false;
+  }
+
+  onMeterInstallDone(installedMeters: string[]){
+    this.installedMetersList = installedMeters;
+  }
+
+  onViewResultsEnabled(){
+    this.isViewResultsEnabled = true;
+  }
+
+  onViewResultsClose(){
+    this.isViewResultsEnabled = false;
+
   }
 
 }

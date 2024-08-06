@@ -21,6 +21,10 @@ export class MeterInstallationTaskComponent {
 
   @Output() cancelled = new EventEmitter<void>();
   @Output() viewXmlEvent = new EventEmitter<string>();
+  @Output() metersInstallDone = new EventEmitter<string[]>();
+  @Output() viewResultsEnabled = new EventEmitter<void>();
+
+
   private httpClient = inject(HttpClient);
 
   inputs: InputParams ={
@@ -71,12 +75,15 @@ export class MeterInstallationTaskComponent {
 
       this.httpClient.post<string[]>(url, requestBody).subscribe({
         next: (response) => {
-          this.installedMetersList = response;
+            this.installedMetersList = response;
+            console.log("meters Instals list is: " +this.installedMetersList);
         },
         complete: () => {
           this.isRunning = false;
           this.isErrored = false;
           this.isCompleted = true;
+          this.metersInstallDone.emit(this.installedMetersList);
+
         },
         error: (error) => {
           this.isRunning = false;
@@ -95,6 +102,10 @@ export class MeterInstallationTaskComponent {
 
   onViewXml(){
     this.viewXmlEvent.emit("Meter Installation");
+  }
+
+  onViewResultsEnable(){
+    this.viewResultsEnabled.emit();
   }
 
 

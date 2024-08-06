@@ -13,7 +13,7 @@
 
 @if(isMeterInstallationClicked){
 
-    <app-meter-installation-task (cancelled)="onCancelMeterInstallation()" (viewXmlEvent)="onViewXml($event)" ></app-meter-installation-task>
+    <app-meter-installation-task (viewResultsEnabled)="onViewResultsEnabled()" (metersInstallDone)="onMeterInstallDone($event)" (cancelled)="onCancelMeterInstallation()" (viewXmlEvent)="onViewXml($event) " ></app-meter-installation-task>
 
 }
 @else if (isDeEnergizationClicked) {
@@ -28,6 +28,10 @@
 
 @if(isViewXmlsEnabled){
   <app-view-request-xmls class="appRequestXml" [taskName]="viewXmlTaskName" (closeButtonEvent)="onviewXmlClose()"></app-view-request-xmls>
+}
+
+@if(isViewResultsEnabled){
+  <app-view-results class="appViewResults" (closeButtonEvent)="onViewResultsClose()" [installedMetersList]="installedMetersList" ></app-view-results>
 }
 
 </div>
