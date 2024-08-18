@@ -3,10 +3,6 @@
   <h1>Meter Installation</h1>
   <h2>Add Parameters, Please Provide Inputs for the following:</h2>
   <form (ngSubmit)="onSubmit()">
-    <p>
-      <label for="provider">Provider</label>
-      <input type="text" id="provider" name="provider" [(ngModel)]="inputs.provider"/>
-    </p>
 
     <p>
       <label for="senderId">SenderID</label>
@@ -33,21 +29,36 @@
       <input type="text" id="create-date" name="create-date" placeholder="yyyy-MM-dd'T'HH:mm:ss'Z'" [(ngModel)]="inputs.createDate"/>
     </p>
 
-
-    <p>
-      <label for="obis">OBIS</label>
-      <input type="text" id="obis" name="obis" [(ngModel)]="inputs.obis"/>
-    </p>
-
-    <p>
-      <label for="obis2">OBIS2</label>
-      <input type="text" id="obis2" name="obis2" [(ngModel)]="inputs.obis2"/>
-    </p>
-
     <p>
       <label for="count">Count</label>
       <input type="text" id="count" name="count" [(ngModel)]="inputs.count"/>
     </p>
+
+    <p>
+      <label for="provider">Provider</label>
+       <select id="provider" name="provider" [(ngModel)]="inputs.provider">
+        <option value="" disabled selected>Select a provider</option>
+       <option *ngFor="let provider of providerList" [value]="provider">{{ provider }}</option>
+       </select>
+    </p>
+
+    <p>
+      <label for="obis">OBIS</label>
+      <select id="provider" name="provider" [(ngModel)]="inputs.obis">
+        <option value="" disabled selected>Select a OBIS</option>
+       <option *ngFor="let obis of obisList" [value]="obis">{{ obis }}</option>
+       </select>
+    </p>
+
+    <p>
+      <label for="obis2">OBIS2</label>
+      <select id="provider" name="provider" [(ngModel)]="inputs.obis2">
+        <option value="" disabled selected>Select a OBIS</option>
+       <option *ngFor="let obis of obisList" [value]="obis">{{ obis }}</option>
+       </select>
+    </p>
+
+
 
     <p class="actions">
       <button type="button" (click)="onCancel()">Close</button>

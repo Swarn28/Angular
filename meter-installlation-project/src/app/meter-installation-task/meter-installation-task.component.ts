@@ -1,23 +1,27 @@
-import { Component, Output,EventEmitter, inject } from '@angular/core';
+import { Component, Output,EventEmitter, inject, OnInit } from '@angular/core';
 import { InputParams } from './meter-installation-model';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { response } from 'express';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-meter-installation-task',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './meter-installation-task.component.html',
   styleUrl: './meter-installation-task.component.css'
 })
-export class MeterInstallationTaskComponent {
+export class MeterInstallationTaskComponent implements OnInit{
 
   isRunClicked = false;
   isRunning = false;
   isErrored = false;
   isCompleted = false;
   installedMetersList: string[] = [];
+  providerList: string[]= [];
+  obisList: string[] = [];
 
   @Output() cancelled = new EventEmitter<void>();
   @Output() viewXmlEvent = new EventEmitter<string>();
@@ -37,6 +41,11 @@ export class MeterInstallationTaskComponent {
     obis: '',
     obis2: '',
     count: 0
+  }
+
+  ngOnInit(): void {
+    this.populateProvidersList();
+    this.populateOBISList();
   }
 
   onSubmit(){
@@ -106,6 +115,34 @@ export class MeterInstallationTaskComponent {
 
   onViewResultsEnable(){
     this.viewResultsEnabled.emit();
+  }
+
+  populateProvidersList(){
+    this.httpClient.get<string[]>('http://localhost:8080/meterAction/v1/getProviders').subscribe({
+      next: (response) => {
+        this.providerList = response;
+      },
+      complete: () => {
+        console.log("Completed fetching providers.");
+      },
+      error: (error) => {
+        console.log("Error ins fetching providers : " +error);
+      }
+    });
+  }
+
+  populateOBISList(){
+    this.httpClient.get<string[]>('http://localhost:8080/meterAction/v1/getObis').subscribe({
+      next: (response) => {
+        this.obisList = response;
+      },
+      complete: () => {
+        console.log("Obis list fetched.");
+      },
+      error: (error) => {
+        console.log("Error while fetching Obis list: " + error);
+      }
+    });
   }
 
 
