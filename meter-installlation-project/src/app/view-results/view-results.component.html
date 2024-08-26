@@ -9,7 +9,18 @@
     </ul>
   </div>
 
+  <div>
+    <p>Validation details are: </p>
+    <ul>
+      @for(meter of validatedInstalledMeters; track meter){
+        <li>{{meter.id}}|{{meter.status}}</li>
+      }
+    </ul>
+  </div>
+
   <button class="closeButton" type="button" (click)="onCloseButton()">Close</button>
+
+  <button class="validateButton" type="button" (click)="onValidateButton()">Validate</button>
 
 }
 </dialog>

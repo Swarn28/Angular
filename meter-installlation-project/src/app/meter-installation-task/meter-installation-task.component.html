@@ -63,9 +63,9 @@
     <p class="actions">
       <button type="button" (click)="onCancel()">Close</button>
       <button [disabled]="isRunning" type="submit">Run</button>
-      @if (isCompleted) {
+       @if (isCompleted) {
         <button (click)="onViewResultsEnable()" type="button">View</button>
-      }
+     }
     </p>
 
     <p>

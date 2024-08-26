@@ -96,6 +96,12 @@ button[type="submit"]:active {
   left: 70%;
 }
 
+.validateButton{
+  position: relative;
+  top: 10;
+  left: 71%;
+}
+
 dialog[open] {
   -webkit-animation: show 1s ease normal;
 }
