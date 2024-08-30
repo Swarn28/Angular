@@ -9,6 +9,7 @@
     </ul>
   </div>
 
+  @if(isRunning){
   <div>
     <p>Validation details are: </p>
     <ul>
@@ -17,6 +18,12 @@
       }
     </ul>
   </div>
+}
+
+  @if (showisRunning) {
+    <div>Running...</div>
+  }
+
 
   <button class="closeButton" type="button" (click)="onCloseButton()">Close</button>
 

@@ -15,6 +15,8 @@ export class ViewResultsComponent {
   @Output() closeButtonEvent = new EventEmitter<void>();
   private httpClient = inject(HttpClient);
   validatedInstalledMeters!: MeterInstallValidateResponse[];
+  isRunning: boolean = false;
+  showisRunning: boolean = false;
 
 
   onCloseButton(){
@@ -23,18 +25,24 @@ export class ViewResultsComponent {
 
   onValidateButton(){
     console.log("Starting validations...")
-    this.installedMetersList.push("IRN714945");
+    this.showisRunning = true;
+   /*  this.installedMetersList.push("IRN714945");
     this.installedMetersList.push("IRN761557");
-    this.installedMetersList.push("IRN405233");
+    this.installedMetersList.push("IRN405233"); */
 
 
     this.httpClient.post<MeterInstallValidateResponse[]>
     ('http://localhost:8080/meterAction/v1/validateMeterInstall',this.installedMetersList).subscribe({
       next: (response) => {
         this.validatedInstalledMeters = response;
+        this.isRunning = true;
         console.log("Fetched installed meters: " +this.validatedInstalledMeters);
       },
-      error: (error) => {
+      complete: () =>{
+        this.showisRunning = false;
+      },
+      error:
+       (error) => {
         console.log("Error while fetching validations is : "+error);
       }
     });
