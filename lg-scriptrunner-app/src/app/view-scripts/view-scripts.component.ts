@@ -16,7 +16,7 @@ export class ViewScriptsComponent {
       description: 'Performs system backup',
       type: 'Shell',
       lastModified: '2024-11-05',
-      status: 'Active'
+      status: 'Inactive'
     },
     {
       name: 'Cleanup Script',
@@ -30,28 +30,28 @@ export class ViewScriptsComponent {
       description: 'Deploys the application',
       type: 'Shell',
       lastModified: '2024-10-28',
-      status: 'Active'
+      status: 'Inactive'
     },
     {
       name: 'Report Generator',
       description: 'Generates daily reports',
       type: 'JavaScript',
       lastModified: '2024-10-20',
-      status: 'Active'
+      status: 'Inactive'
     },
     {
       name: 'Database Migration',
       description: 'Migrates database schemas',
       type: 'SQL',
       lastModified: '2024-11-01',
-      status: 'Pending'
+      status: 'Inactive'
     },
     {
       name: 'Log Archiver',
       description: 'Archives log files',
       type: 'Bash',
       lastModified: '2024-11-02',
-      status: 'Completed'
+      status: 'Inactive'
     }
   ];
 
