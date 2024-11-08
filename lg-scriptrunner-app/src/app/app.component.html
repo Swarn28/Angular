@@ -1,0 +1,7 @@
+<h1>Welcome To Script Runner!!!</h1>
+@if(!isLoginDone){
+<app-login (loginDone)="OnLoginDone($event)"></app-login>
+}
+@if(isLoginDone){
+<app-view-scripts></app-view-scripts>
+}

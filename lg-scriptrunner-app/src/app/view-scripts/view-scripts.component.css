@@ -1,0 +1,59 @@
+/* Container for the table */
+.table-container {
+  margin: 20px;
+  text-align: left;
+}
+
+/* Title Styling */
+.table-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Table Styling */
+.scripts-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* Table Header */
+.scripts-table th {
+  background-color: #6b876c;
+  color: white(24, 27, 199);
+  padding: 10px;
+  text-align: left;
+}
+
+/* Table Data */
+.scripts-table td {
+  padding: 10px;
+  background-color: #4caf50;
+  border: 1px solid rgb(13, 10, 28);;
+}
+
+/* Table Row Hover Effect */
+.scripts-table tr:hover {
+  background-color:rgb(88, 64, 203);;
+}
+
+/* Align the table to the left corner */
+.scripts-table {
+  float: left;
+}
+
+/* Execute Button Styling */
+.execute-button {
+  padding: 5px 10px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.execute-button:hover {
+  background-color: #e64a19;
+}

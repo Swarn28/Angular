@@ -1,0 +1,31 @@
+<p>view-scripts works!</p>
+
+<div class="table-container">
+  <h1 class="table-title">Scripts Available</h1>
+  <table class="scripts-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Script Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Last Modified</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let script of scripts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ script.name }}</td>
+        <td>{{ script.description }}</td>
+        <td>{{ script.type }}</td>
+        <td>{{ script.lastModified }}</td>
+        <td>{{ script.status }}</td>
+        <td>
+          <button (click)="executeScript(script)" class="execute-button">Execute</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,8 @@
+h1{
+    color: rgb(88, 64, 203);
+    font-weight: bold;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: baseline;     /* Vertically center */
+}
