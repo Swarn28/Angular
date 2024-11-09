@@ -31,7 +31,18 @@
 .scripts-table td {
   padding: 10px;
   background-color: #4caf50;
-  border: 1px solid rgb(13, 10, 28);;
+  border: 1px solid rgb(13, 10, 28);
+  cursor: pointer;
+}
+
+/* to change color of selected row*/
+.scripts-table tr.selected {
+  background-color: #b3c426; /* Background color for selected row */
+  cursor: auto;
+  border-top: 8px solid;
+  border-top-color: #450ec6;
+  border-bottom: 8px solid;
+  border-bottom-color: #450ec6 ;
 }
 
 /* Table Row Hover Effect */
@@ -56,4 +67,61 @@
 
 .execute-button:hover {
   background-color: #e64a19;
+}
+
+/*add script button */
+.add-script-button {
+  padding: 15px 30px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-left: 5px;
+  position: absolute;
+  top: 165px;
+  right: 450px;
+}
+
+.add-script-button:hover {
+  background-color: #450ec6;
+}
+
+p{
+  color: rgb(203, 64, 64);
+  font-weight: bold;
+  font-size: xx;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: baseline;     /* Vertically center */
+}
+
+/* Flex container to position the button */
+.header-container {
+  display: flex;
+  justify-content: flex-end;  /* Aligns the button to the right */
+  align-items: center;        /* Vertically centers the button */
+  padding: 10px;              /* Adds space around the content */
+  width: 100%;                /* Full width of the page */
+  position: fixed;            /* Keeps the button at the top even on scroll */
+  top: 0;                     /* Positions it at the top */
+  z-index: 1000;              /* Ensures it stays above other elements */
+}
+
+/* Styling for the logout button */
+.logout-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 50px;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
 }

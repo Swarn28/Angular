@@ -1,0 +1,27 @@
+import { Injectable } from "@angular/core";
+import { UserType } from "./UserTypeEnum";
+import { Script } from "../view-scripts/script.model";
+
+@Injectable({providedIn:'root'})
+export class SharedService{
+
+  private currentUserType!: UserType;
+  private selectedScript!: Script;
+
+  setCurrentUserType(userType: UserType){
+    this.currentUserType = userType;
+  }
+
+  getCurrentUserType():UserType{
+    return this.currentUserType;
+  }
+
+  getSelectedScript(): Script{
+    return this.selectedScript;
+  }
+
+  setSelectedScript(selScript: Script){
+    this.selectedScript = selScript;
+  }
+
+}

@@ -1,7 +1,12 @@
-<p>view-scripts works!</p>
+@if(userType === 'ADMIN'){
+  <p>Admin Screen</p>
+}
 
 <div class="table-container">
   <h1 class="table-title">Scripts Available</h1>
+  @if(userType === 'ADMIN'){
+    <button class="add-script-button">Add Script</button>
+  }
   <table class="scripts-table">
     <thead>
       <tr>
@@ -15,7 +20,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let script of scripts; let i = index">
+      <tr *ngFor="let script of scripts; let i = index"
+      (click)="onRowClick(i)"
+        [class.selected]="isSelected(i)">
         <td>{{ i + 1 }}</td>
         <td>{{ script.name }}</td>
         <td>{{ script.description }}</td>
@@ -28,4 +35,8 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="header-container">
+  <button class="logout-button" (click)="onLogout()">Logout</button>
 </div>

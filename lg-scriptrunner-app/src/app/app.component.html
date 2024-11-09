@@ -1,7 +1,15 @@
-<h1>Welcome To Script Runner!!!</h1>
+<h1>Welcome To Script Executor!!!</h1>
 @if(!isLoginDone){
-<app-login (loginDone)="OnLoginDone($event)"></app-login>
+<app-login (loginDone)="onAdminLogin($event)"></app-login>
 }
-@if(isLoginDone){
-<app-view-scripts></app-view-scripts>
+@if(isLoginDone && !isLogoutDone){
+<div class="main-container">
+<app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()"></app-view-scripts>
+<app-about-script class="about-script"
+  [isEnabled]="isAboutScriptEnabled"
+  [selectedScript]="selectedScript">
+</app-about-script>
+</div>
 }
+
+
