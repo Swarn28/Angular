@@ -5,11 +5,14 @@ import { LoginComponent } from "./login/login.component";
 import { ViewScriptsComponent } from "./view-scripts/view-scripts.component";
 import { AboutScriptComponent } from './about-script/about-script.component';
 import { Script } from './view-scripts/script.model';
+import { ScriptAdditionalProps } from './about-script/scriptAdditionalProperties.model';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, ViewScriptsComponent,AboutScriptComponent],
+  imports: [RouterOutlet, LoginComponent, ViewScriptsComponent,AboutScriptComponent,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -17,7 +20,7 @@ export class AppComponent {
   title = 'lg-scriptrunner-app';
   isLoginDone:boolean= false;
   isLogoutDone:boolean = false;
-  selectedScript!: Script;
+  selectedScriptProp!: ScriptAdditionalProps;
 
   isAboutScriptEnabled:boolean = false;
 
@@ -38,7 +41,9 @@ export class AppComponent {
   onAboutScript(){
     console.log("in app componenet for About script..")
     this.isAboutScriptEnabled = true;
-    this.selectedScript = this.sharedService.getSelectedScript();
+    this.selectedScriptProp = this.sharedService.getSelectedScriptProp();
   }
+
+
 
 }

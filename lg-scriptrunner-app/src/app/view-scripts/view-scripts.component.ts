@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../shared/shared.services';
 import { Script } from './script.model';
+import { ScriptAdditionalProps } from '../about-script/scriptAdditionalProperties.model';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class ViewScriptsComponent {
   scripts: Script[] = [];
   userType!: UserType;
   selectedIndex!:Number;
+  private scriptProps: ScriptAdditionalProps[] = [];
 
+  public selectedScriptProp!: ScriptAdditionalProps;
 
   @Output() logoutDone = new EventEmitter<boolean>;
   @Output() rowSelected = new EventEmitter<void>;
@@ -28,6 +31,7 @@ export class ViewScriptsComponent {
 
   ngOnInit() {
     this.initializeScripts();
+    this.initializeScriptsProps()
     this.userType = this.sharedService.getCurrentUserType();
   }
 
@@ -38,12 +42,30 @@ export class ViewScriptsComponent {
 
   initializeScripts(): void {
     this.scripts = [
-      { name: 'Backup Script', description: 'Performs system backup', type: 'Shell', lastModified: '2024-11-05', status: 'Inactive' },
-      { name: 'Cleanup Script', description: 'Cleans temporary files', type: 'Python', lastModified: '2024-11-03', status: 'Inactive' },
-      { name: 'Deployment Script', description: 'Deploys the application', type: 'Shell', lastModified: '2024-10-28', status: 'Inactive' },
-      { name: 'Report Generator', description: 'Generates daily reports', type: 'JavaScript', lastModified: '2024-10-20', status: 'Inactive' },
-      { name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', lastModified: '2024-11-01', status: 'Inactive' },
-      { name: 'Log Archiver', description: 'Archives log files', type: 'Bash', lastModified: '2024-11-02', status: 'Inactive' }
+      {
+        name: 'Backup Script', description: 'Performs system backup', type: 'Shell', lastModified: '2024-11-05', status: 'Inactive',
+        id: 1
+      },
+      {
+        name: 'Cleanup Script', description: 'Cleans temporary files', type: 'Python', lastModified: '2024-11-03', status: 'Inactive',
+        id: 2
+      },
+      {
+        name: 'Deployment Script', description: 'Deploys the application', type: 'Shell', lastModified: '2024-10-28', status: 'Inactive',
+        id: 3
+      },
+      {
+        name: 'Report Generator', description: 'Generates daily reports', type: 'JavaScript', lastModified: '2024-10-20', status: 'Inactive',
+        id: 4
+      },
+      {
+        name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', lastModified: '2024-11-01', status: 'Inactive',
+        id: 5
+      },
+      {
+        name: 'Log Archiver', description: 'Archives log files', type: 'Bash', lastModified: '2024-11-02', status: 'Inactive',
+        id: 6
+      }
     ];
   }
 
@@ -79,10 +101,112 @@ export class ViewScriptsComponent {
   onRowClick(index: number): void {
     console.log('rowSelected emitted:', this.scripts[index]);
     this.populateSelectedScript(this.scripts[index].name);
+    this.populateAdditionalProps(this.scripts[index].name);
     this.rowSelected.emit();
+    this.selectedIndex = index;
   }
 
   isSelected(index: number): boolean {
     return this.selectedIndex === index;
   }
+
+
+  initializeScriptsProps(): void {
+    this.scriptProps = [
+      {
+        name: 'Backup Script',
+        id: 1,
+        arguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: '/data/output/',
+            isMandatory: true }
+        ],
+        hits: 1500,
+        likes: 250,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ]
+      },
+      {
+        name: 'Report Generator',
+        id: 4,
+        arguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: '/data/output/',
+            isMandatory: true }
+        ],
+        hits: 100,
+        likes: 20,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ]
+      },
+      {
+        name: 'Log Archiver',
+        id: 6,
+        arguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: '/data/output/',
+            isMandatory: true }
+        ],
+        hits: 15,
+        likes: 2,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ]
+      }
+    ];
+  }
+
+  populateAdditionalProps(scriptName:string){
+       const script = this.scriptProps.find((script) => script.name === scriptName);
+       if(script){
+        this.selectedScriptProp = script;
+        this.sharedService.setSelectedScriptProp(this.selectedScriptProp);
+       }
+
+  }
+
 }

@@ -1,6 +1,60 @@
-<div class="main-props">
 @if(isEnabled){
-<p>about-script works! {{selectedScript.name}}</p>
-}
+  <div class="container">
+    <h2>Scripts Details</h2>
+    <div>
+      <div class="script-details-flex">
+        <h3>{{ selectedScriptProp.name }}</h3>
+        <p><strong>Hits:</strong> {{ selectedScriptProp.hits }}</p>
+        <p><strong>Likes:</strong> {{ selectedScriptProp.likes }}</p>
+      </div>
 
-</div>
+       <!-- Toggle Buttons -->
+    <button (click)="showArguments = !showArguments" class="toggle-button">
+      {{ showArguments ? 'Hide Arguments' : 'Show Arguments' }}
+    </button>
+    <button (click)="showComments = !showComments" class="toggle-button">
+      {{ showComments ? 'Hide Comments' : 'Show Comments' }}
+    </button>
+    <button class="toggle-button">Developer's Profile</button>
+    <button class="toggle-button">Help</button>
+
+
+      @if(showArguments){
+      <h4>Arguments:</h4>
+      <ul>
+        <li *ngFor="let arg of selectedScriptProp.arguments;let i = index">
+          <p><strong>{{ arg.name }}</strong> ({{ arg.description }})<br /></p>
+          <p><em>Mandatory:</em> {{ arg.isMandatory ? 'Yes' : 'No' }}</p>
+          <input
+          type="text"
+          [(ngModel)]="selectedScriptProp.arguments[i].value"
+          placeholder="Enter value"
+          class="arg-input"
+        />
+        <button (click)="updateArgumentValue(i)" class="update-button">Update</button>
+        </li>
+      </ul>
+    }
+
+    @if(showComments){
+      <h4>Comments:</h4>
+      <div *ngIf="selectedScriptProp.comments && selectedScriptProp.comments.length > 0">
+        <div *ngFor="let comment of selectedScriptProp.comments" class="comment-item">
+          <div class="comment-header">
+            <div class="comment-details">
+              <p class="comment-author">{{ comment.commentBy }}</p>
+              <p class="comment-time">{{ comment.date | date: 'short' }}</p>
+            </div>
+          </div>
+          <p class="comment-text">{{ comment.comment }}</p>
+        </div>
+      </div>
+      <button class="update-button">Add Comment</button>
+    }
+      <div *ngIf="!selectedScriptProp.comments || selectedScriptProp.comments.length === 0">
+        <p>No comments available.</p>
+      </div>
+    </div>
+  </div>
+
+}

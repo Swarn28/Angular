@@ -69,6 +69,10 @@
   background-color: #e64a19;
 }
 
+.execute-button:active {
+  background-color: grey;
+}
+
 /*add script button */
 .add-script-button {
   padding: 15px 30px;
@@ -85,6 +89,42 @@
 }
 
 .add-script-button:hover {
+  background-color: #450ec6;
+}
+
+.audit-button {
+  padding: 15px 30px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-left: 25px;
+  position: absolute;
+  top: 165px;
+  right: 580px;
+}
+
+.audit-button:hover {
+  background-color: #450ec6;
+}
+
+.review-button {
+  padding: 15px 30px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-left: 25px;
+  position: absolute;
+  top: 165px;
+  right: 680px;
+}
+
+.review-button:hover {
   background-color: #450ec6;
 }
 
