@@ -1,5 +1,5 @@
 p {
-  color: blue;
+  color: rgb(8, 8, 11);;
   text-align: left;
 }
 
@@ -9,9 +9,7 @@ p {
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
 }
 
 .script-card {
@@ -36,25 +34,28 @@ li {
 }
 
 h2{
-  color: blue;
+  color: rgb(8, 8, 11);
 }
 
 h4{
-  color: blue;
+  color: rgb(8, 8, 11);
 }
 
 strong{
-  color: blue;
+  color: rgb(8, 8, 11);
 }
 
 em{
-  color:blue
+  color:rgb(8, 8, 11);
 }
 
 .script-details-flex {
   display: flex;
+  position: relative;
   align-items: center;
   gap: 15px;
+  top:5px;
+  margin-bottom: 5px;
 }
 
 .toggle-button {
@@ -146,3 +147,9 @@ em{
   margin-top: 5px;
   line-height: 1.5;
 }
+
+.about-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  }

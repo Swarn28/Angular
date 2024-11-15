@@ -43,27 +43,27 @@ export class ViewScriptsComponent {
   initializeScripts(): void {
     this.scripts = [
       {
-        name: 'Backup Script', description: 'Performs system backup', type: 'Shell', lastModified: '2024-11-05', status: 'Inactive',
+        name: 'Backup Script', description: 'Performs system backup', type: 'Shell', status: 'Inactive',
         id: 1
       },
       {
-        name: 'Cleanup Script', description: 'Cleans temporary files', type: 'Python', lastModified: '2024-11-03', status: 'Inactive',
+        name: 'Cleanup Script', description: 'Cleans temporary files', type: 'Python', status: 'Inactive',
         id: 2
       },
       {
-        name: 'Deployment Script', description: 'Deploys the application', type: 'Shell', lastModified: '2024-10-28', status: 'Inactive',
+        name: 'Deployment Script', description: 'Deploys the application', type: 'Shell', status: 'Inactive',
         id: 3
       },
       {
-        name: 'Report Generator', description: 'Generates daily reports', type: 'JavaScript', lastModified: '2024-10-20', status: 'Inactive',
+        name: 'Report Generator', description: 'Generates daily reports', type: 'JavaScript', status: 'Inactive',
         id: 4
       },
       {
-        name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', lastModified: '2024-11-01', status: 'Inactive',
+        name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', status: 'Inactive',
         id: 5
       },
       {
-        name: 'Log Archiver', description: 'Archives log files', type: 'Bash', lastModified: '2024-11-02', status: 'Inactive',
+        name: 'Log Archiver', description: 'Archives log files', type: 'Bash', status: 'Inactive',
         id: 6
       }
     ];
@@ -124,7 +124,11 @@ export class ViewScriptsComponent {
           { name: 'outputPath',
             description: 'Path to the output data directory',
             value: '/data/output/',
-            isMandatory: true }
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
         ],
         hits: 1500,
         likes: 250,
@@ -152,7 +156,11 @@ export class ViewScriptsComponent {
           { name: 'outputPath',
             description: 'Path to the output data directory',
             value: '/data/output/',
-            isMandatory: true }
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
         ],
         hits: 100,
         likes: 20,
@@ -180,7 +188,11 @@ export class ViewScriptsComponent {
           { name: 'outputPath',
             description: 'Path to the output data directory',
             value: '/data/output/',
-            isMandatory: true }
+            isMandatory: true },
+            { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
         ],
         hits: 15,
         likes: 2,

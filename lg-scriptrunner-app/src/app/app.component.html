@@ -4,12 +4,12 @@
 }
 @if(isLoginDone && !isLogoutDone){
 <div class="main-container">
-<app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()"></app-view-scripts>
-<app-about-script class="about-script"
-  [isEnabled]="isAboutScriptEnabled"
-  [selectedScriptProp]="selectedScriptProp">
-</app-about-script>
+  <div class="app-view-scripts-container">
+    <app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()"></app-view-scripts>
+  </div>
+  <div class="app-about-scripts-container">
+    <app-about-script class="about-script" [isEnabled]="isAboutScriptEnabled" [selectedScriptProp]="selectedScriptProp">
+    </app-about-script>
+  </div>
 </div>
 }
-
-

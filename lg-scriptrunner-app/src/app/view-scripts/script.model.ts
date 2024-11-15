@@ -7,6 +7,5 @@ export interface Script {
   id: Number;
   description: string;
   type: string;
-  lastModified: string;
   status: string;
 }

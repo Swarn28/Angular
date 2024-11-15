@@ -4,12 +4,14 @@
 
 <div class="table-container">
   <h1 class="table-title">Scripts Available</h1>
+  <div class="optional">
   @if(userType === 'ADMIN'){
     <button class="add-script-button">Add Script</button>
     <button class="audit-button">Audit</button>
     <button class="review-button">Review</button>
 
   }
+</div>
   <table class="scripts-table">
     <thead>
       <tr>
@@ -17,7 +19,6 @@
         <th>Script Name</th>
         <th>Description</th>
         <th>Type</th>
-        <th>Last Modified</th>
         <th>Status</th>
         <th>Actions</th>
       </tr>
@@ -30,7 +31,6 @@
         <td>{{ script.name }}</td>
         <td>{{ script.description }}</td>
         <td>{{ script.type }}</td>
-        <td>{{ script.lastModified }}</td>
         <td>{{ script.status }}</td>
         <td>
           <button (click)="executeScript(script)" class="execute-button">Execute</button>

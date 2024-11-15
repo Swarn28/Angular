@@ -8,13 +8,13 @@ h1{
 }
 
 .main-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Adds space between the components */
+  align-items: center;
+  width: 100%;
 }
 
 .about-script {
-  margin-top: 20px; /* Optional: Adds space above the about script component */
+  display: flex;
+  margin-top: 5px; /* Optional: Adds space above the about script component */
   align-self: flex-start;
-  padding-left: 20px;
 }
+

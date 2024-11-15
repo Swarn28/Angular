@@ -1,9 +1,11 @@
 @if(isEnabled){
   <div class="container">
-    <h2>Scripts Details</h2>
+    <div class="about-title">
+      <h2>{{ selectedScriptProp.name }}</h2>
+    </div>
     <div>
       <div class="script-details-flex">
-        <h3>{{ selectedScriptProp.name }}</h3>
+        <!-- <h3>{{ selectedScriptProp.name }}</h3> -->
         <p><strong>Hits:</strong> {{ selectedScriptProp.hits }}</p>
         <p><strong>Likes:</strong> {{ selectedScriptProp.likes }}</p>
       </div>
@@ -16,7 +18,7 @@
       {{ showComments ? 'Hide Comments' : 'Show Comments' }}
     </button>
     <button class="toggle-button">Developer's Profile</button>
-    <button class="toggle-button">Help</button>
+    <button class="toggle-button">Script Helper</button>
 
 
       @if(showArguments){
@@ -31,9 +33,10 @@
           placeholder="Enter value"
           class="arg-input"
         />
-        <button (click)="updateArgumentValue(i)" class="update-button">Update</button>
-        </li>
+<!--         <button (click)="updateArgumentValue(i)" class="update-button">Update</button>-->
+      </li>
       </ul>
+      <button class="update-button">Apply</button>
     }
 
     @if(showComments){
