@@ -143,7 +143,9 @@ export class ViewScriptsComponent {
             comment: 'Needs optimization for large datasets.',
             date: new Date('2024-11-11T14:30:00Z').toISOString()
           }
-        ]
+        ],
+        developers: ["Rohan K","Shankar Jain"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
       },
       {
         name: 'Report Generator',
@@ -175,7 +177,9 @@ export class ViewScriptsComponent {
             comment: 'Needs optimization for large datasets.',
             date: new Date('2024-11-11T14:30:00Z').toISOString()
           }
-        ]
+        ],
+        developers: ["Shankar Jain", "Meera Naik"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
       },
       {
         name: 'Log Archiver',
@@ -207,7 +211,9 @@ export class ViewScriptsComponent {
             comment: 'Needs optimization for large datasets.',
             date: new Date('2024-11-11T14:30:00Z').toISOString()
           }
-        ]
+        ],
+        developers: ["Swami Renkat"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
       }
     ];
   }

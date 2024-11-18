@@ -50,18 +50,17 @@ em{
 }
 
 .script-details-flex {
-  display: flex;
   position: relative;
-  align-items: center;
-  gap: 15px;
-  top:5px;
-  margin-bottom: 5px;
+}
+
+.script-details-flex > p {
+  display: block; /* Forces block-level display */
 }
 
 .toggle-button {
   margin: 10px;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #2274b2;
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,7 +68,7 @@ em{
 }
 
 .toggle-button:hover {
-  background-color: #0056b3;
+  background-color: #450ec6;
 }
 
 .argument-item {

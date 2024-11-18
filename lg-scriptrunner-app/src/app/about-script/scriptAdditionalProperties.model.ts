@@ -9,4 +9,6 @@ export interface ScriptAdditionalProps {
   hits: Number;
   likes: Number;
   comments: Comment[];
+  developers: string[];
+  lastModified: string;
 }

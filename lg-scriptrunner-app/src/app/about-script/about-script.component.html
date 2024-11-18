@@ -3,13 +3,16 @@
     <div class="about-title">
       <h2>{{ selectedScriptProp.name }}</h2>
     </div>
-    <div>
+    <div class="fullDetails">
       <div class="script-details-flex">
         <!-- <h3>{{ selectedScriptProp.name }}</h3> -->
-        <p><strong>Hits:</strong> {{ selectedScriptProp.hits }}</p>
-        <p><strong>Likes:</strong> {{ selectedScriptProp.likes }}</p>
+        <p><strong>Hits: </strong> {{ selectedScriptProp.hits }}</p>
+        <p><strong>Likes: </strong> {{ selectedScriptProp.likes }}</p>
+        <p><strong>Developers: </strong> {{ selectedScriptProp.developers }}</p>
+        <p><strong>Last Modified: </strong> {{ selectedScriptProp.lastModified }}</p>
       </div>
 
+  <div class="toggleButtons">
        <!-- Toggle Buttons -->
     <button (click)="showArguments = !showArguments" class="toggle-button">
       {{ showArguments ? 'Hide Arguments' : 'Show Arguments' }}
@@ -19,14 +22,15 @@
     </button>
     <button class="toggle-button">Developer's Profile</button>
     <button class="toggle-button">Script Helper</button>
+  </div>
 
-
+  <div class="showArguments">
       @if(showArguments){
       <h4>Arguments:</h4>
       <ul>
         <li *ngFor="let arg of selectedScriptProp.arguments;let i = index">
-          <p><strong>{{ arg.name }}</strong> ({{ arg.description }})<br /></p>
-          <p><em>Mandatory:</em> {{ arg.isMandatory ? 'Yes' : 'No' }}</p>
+          <p><strong>{{ arg.name }}</strong> ({{ arg.description }})</p>
+          <!-- <p>{{ arg.isMandatory ? 'Mandatory' : 'Optional' }}</p> -->
           <input
           type="text"
           [(ngModel)]="selectedScriptProp.arguments[i].value"
@@ -38,7 +42,9 @@
       </ul>
       <button class="update-button">Apply</button>
     }
+  </div>
 
+  <div class="showComments">
     @if(showComments){
       <h4>Comments:</h4>
       <div *ngIf="selectedScriptProp.comments && selectedScriptProp.comments.length > 0">
@@ -54,10 +60,14 @@
       </div>
       <button class="update-button">Add Comment</button>
     }
+  </div>
+
       <div *ngIf="!selectedScriptProp.comments || selectedScriptProp.comments.length === 0">
         <p>No comments available.</p>
       </div>
+
     </div>
+
   </div>
 
 }

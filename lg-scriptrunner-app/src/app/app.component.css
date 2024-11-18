@@ -18,3 +18,15 @@ h1{
   align-self: flex-start;
 }
 
+.logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 85px; /* Adjust the size as needed */
+  width: auto;
+}
