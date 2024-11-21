@@ -76,25 +76,7 @@ export class ViewScriptsComponent {
     // For now, just log the script name. You can replace this with actual execution logic.
     console.log(`Executing script: ${script.name}`);
     alert(`Executing script: ${script.name}`);
-    let param1 = this.sharedService.getSelectedScript().name;
-    let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
-    let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
-    let param4 = this.sharedService.getSelectedScriptProp().arguments[2].value;
-    let param5 = "UNIX";
-
-    console.log("execute script " + param1+ " , "+param2+ " , "+param3+ " , "+param4+ " , "+param5);
-
-
-    // API URL
-    const apiUrl = 'http://localhost:8080/v1/executor/run'; // Replace with your backend URL
-
-    // Create HttpParams object
-    const params = new HttpParams()
-      .set('param1', param1)
-      .set('param2', param2)
-      .set('param3', param3)
-      .set('param4', param4)
-      .set('param5', param5);
+    const { apiUrl, params } = this.populateObject();
 
     // Make HTTP POST request
     this.httpClient.post<string>(apiUrl,params, { responseType: 'text' as 'json' } ).subscribe({
@@ -112,6 +94,30 @@ export class ViewScriptsComponent {
       }
     });
 
+  }
+
+  public populateObject() {
+    let script_name = this.sharedService.getSelectedScript().name;
+    let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
+    let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
+    let parameters = param2 + " " + param3;
+    let hostname = this.sharedService.getSelectedScriptProp().arguments[2].value;
+    let server_type = "UNIX";
+
+    console.log("execute script " + script_name + " , " + parameters + " , " + hostname + " , " + server_type);
+
+
+    // API URL
+    const apiUrl = 'http://localhost:8080/v1/executor/run'; // Replace with your backend URL
+
+
+    // Create HttpParams object
+    const params = new HttpParams()
+      .set('script_name', script_name)
+      .set('hostname', hostname)
+      .set('server_type', server_type)
+      .set('parameters', parameters);
+    return { apiUrl, params };
   }
 
    addScript(script: Script): void {
