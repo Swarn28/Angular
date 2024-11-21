@@ -1,9 +1,10 @@
 import { UserType } from './../shared/UserTypeEnum';
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, inject, Output, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../shared/shared.services';
 import { Script } from './script.model';
 import { ScriptAdditionalProps } from '../about-script/scriptAdditionalProperties.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ViewScriptsComponent {
 
   @Output() logoutDone = new EventEmitter<boolean>;
   @Output() rowSelected = new EventEmitter<void>;
+  private httpClient = inject(HttpClient);
 
 
   constructor(private sharedService: SharedService){}
@@ -74,6 +76,42 @@ export class ViewScriptsComponent {
     // For now, just log the script name. You can replace this with actual execution logic.
     console.log(`Executing script: ${script.name}`);
     alert(`Executing script: ${script.name}`);
+    let param1 = this.sharedService.getSelectedScript().name;
+    let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
+    let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
+    let param4 = this.sharedService.getSelectedScriptProp().arguments[2].value;
+    let param5 = "UNIX";
+
+    console.log("execute script " + param1+ " , "+param2+ " , "+param3+ " , "+param4+ " , "+param5);
+
+
+    // API URL
+    const apiUrl = 'http://localhost:8080/v1/executor/run'; // Replace with your backend URL
+
+    // Create HttpParams object
+    const params = new HttpParams()
+      .set('param1', param1)
+      .set('param2', param2)
+      .set('param3', param3)
+      .set('param4', param4)
+      .set('param5', param5);
+
+    // Make HTTP POST request
+    this.httpClient.post<string>(apiUrl,params, { responseType: 'text' as 'json' } ).subscribe({
+      next: (response) => {
+        if (response === 'success') {
+          alert('Script executed successfully!');
+        }
+      },
+      complete: () => {
+        console.log('Request completed.');
+      },
+      error: (error) => {
+        console.error('Error executing script:', error);
+        alert('An error occurred while executing the script.');
+      }
+    });
+
   }
 
    addScript(script: Script): void {

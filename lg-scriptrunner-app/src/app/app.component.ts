@@ -9,6 +9,7 @@ import { ScriptAdditionalProps } from './about-script/scriptAdditionalProperties
 import { FormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
