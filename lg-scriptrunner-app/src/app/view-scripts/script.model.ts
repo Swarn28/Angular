@@ -8,4 +8,6 @@ export interface Script {
   description: string;
   type: string;
   status: string;
+  scriptName: string;
+
 }

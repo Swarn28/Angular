@@ -8,6 +8,7 @@ export interface ScriptAdditionalProps {
   arguments: Argument[];
   hits: Number;
   likes: Number;
+  rating: Number;
   comments: Comment[];
   developers: string[];
   lastModified: string;

@@ -5,6 +5,7 @@ import { SharedService } from '../shared/shared.services';
 import { Script } from './script.model';
 import { ScriptAdditionalProps } from '../about-script/scriptAdditionalProperties.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { DevProfile } from '../about-script/selected-dev-profile/dev-profile-model';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ViewScriptsComponent {
 
   ngOnInit() {
     this.initializeScripts();
-    this.initializeScriptsProps()
+    this.initializeScriptsProps();
     this.userType = this.sharedService.getCurrentUserType();
   }
 
@@ -46,28 +47,34 @@ export class ViewScriptsComponent {
     this.scripts = [
       {
         name: 'Backup Script', description: 'Performs system backup', type: 'Shell', status: 'Inactive',
-        id: 1
+        id: 1, scriptName: "backup.ksh"
+
       },
       {
         name: 'Cleanup Script', description: 'Cleans temporary files', type: 'Python', status: 'Inactive',
-        id: 2
+        id: 2,scriptName: "Cleanup.py"
       },
       {
         name: 'Deployment Script', description: 'Deploys the application', type: 'Shell', status: 'Inactive',
-        id: 3
+        id: 3,scriptName: "Deployment.ksh"
       },
       {
         name: 'Report Generator', description: 'Generates daily reports', type: 'JavaScript', status: 'Inactive',
-        id: 4
+        id: 4, scriptName: "report_generation.js"
+
       },
       {
         name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', status: 'Inactive',
-        id: 5
+        id: 5,scriptName: "DatabaseMigration.py"
       },
       {
         name: 'Log Archiver', description: 'Archives log files', type: 'Bash', status: 'Inactive',
-        id: 6
-      }
+        id: 6, scriptName: "Log_Archiever.ksh"
+      },
+      {
+        name: 'Add Two Numbers', description: 'Perform Addition', type: 'Python', status: 'Inactive',
+        id: 7, scriptName: "add_num.py"
+      },
     ];
   }
 
@@ -78,26 +85,29 @@ export class ViewScriptsComponent {
     alert(`Executing script: ${script.name}`);
     const { apiUrl, params } = this.populateObject();
 
-    // Make HTTP POST request
-    this.httpClient.post<string>(apiUrl,params, { responseType: 'text' as 'json' } ).subscribe({
+    // Make HTTP GET request
+    this.httpClient.get<string>(apiUrl, {
+      params: params,
+      responseType: 'text' as 'json'
+    }).subscribe({
       next: (response) => {
-        if (response === 'success') {
+        if (response === 'SUCCESS') {
           alert('Script executed successfully!');
         }
-      },
-      complete: () => {
-        console.log('Request completed.');
       },
       error: (error) => {
         console.error('Error executing script:', error);
         alert('An error occurred while executing the script.');
+      },
+      complete: () => {
+        console.log('Request completed.');
       }
     });
 
   }
 
   public populateObject() {
-    let script_name = this.sharedService.getSelectedScript().name;
+    let script_name = this.sharedService.getSelectedScript().scriptName;
     let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
     let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
     let parameters = param2 + " " + param3;
@@ -108,7 +118,7 @@ export class ViewScriptsComponent {
 
 
     // API URL
-    const apiUrl = 'http://localhost:8080/v1/executor/run'; // Replace with your backend URL
+    const apiUrl = 'http://ussmfedt160035.am.bm.net:5000/execute'; // Replace with your backend URL
 
 
     // Create HttpParams object
@@ -163,18 +173,19 @@ export class ViewScriptsComponent {
         arguments: [
           { name: 'inputPath',
             description: 'Path to the input data directory',
-            value: '/data/input/',
+            value: '/home/dir',
             isMandatory: true },
           { name: 'outputPath',
             description: 'Path to the output data directory',
-            value: '/data/output/',
+            value: '/home/logs/temp',
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
-              value: '10.6.160.35',
+              value: 'ussmfedt16',
               isMandatory: true }
         ],
         hits: 1500,
+        rating: 3,
         likes: 250,
         comments: [
           {
@@ -209,6 +220,7 @@ export class ViewScriptsComponent {
               isMandatory: true }
         ],
         hits: 100,
+        rating: 4,
         likes: 20,
         comments: [
           {
@@ -243,6 +255,7 @@ export class ViewScriptsComponent {
               isMandatory: true }
         ],
         hits: 15,
+        rating: 2,
         likes: 2,
         comments: [
           {
@@ -257,7 +270,42 @@ export class ViewScriptsComponent {
           }
         ],
         developers: ["Swami Renkat"],
-        lastModified: new Date("10-10-24").toISOString().split('T')[0]
+        lastModified: new Date("10-10-24").toISOString().split('T')[0],
+      },
+      {
+        name: 'Add Two Numbers',
+        id: 7,
+        arguments: [
+          { name: 'First Number',
+            description: 'Enter First Number',
+            value: '2',
+            isMandatory: true },
+          { name: 'Secons Number',
+            description: 'Enter Second Number',
+            value: '3',
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: 'ussmfedt160036.am.bm.net',
+              isMandatory: true }
+        ],
+        hits: 152,
+        rating: 5,
+        likes: 21,
+        comments: [
+          {
+            commentBy: 'Deb',
+            comment: 'Great script for addition!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bake',
+            comment: 'Must use script',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ],
+        developers: ["Rohan K","Shankar Jain"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0],
       }
     ];
   }

@@ -1,0 +1,11 @@
+<div class="dev-details-tittle">
+  <h2>Developer Details</h2>
+</div>
+<div class="dev-details">
+  <p><strong>Name:</strong>{{ selectedDevProfile.name }}</p>
+  <!-- <img [src]="selectedDevProfile.photo" alt="Developer Photo" width="100"> -->
+  <p><strong>Languages:</strong> {{ selectedDevProfile.languages|| 'No languages available' }}</p>
+  <p><strong>Reporting Manager:</strong> {{ selectedDevProfile.reportingManager }}</p>
+  <p><strong>Email:</strong> {{ selectedDevProfile.email }}</p>
+  <button (click)="onClose()">Close</button>
+</div>

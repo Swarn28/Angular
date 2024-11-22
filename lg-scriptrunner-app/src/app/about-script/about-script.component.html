@@ -3,12 +3,24 @@
     <div class="about-title">
       <h2>{{ selectedScriptProp.name }}</h2>
     </div>
+    <div class="star-container">
+  <span *ngFor="let star of starArray; index as i" class="star" [class.filled]="i < selectedScriptProp.rating.valueOf()">
+    ★
+  </span>
+</div>
     <div class="fullDetails">
       <div class="script-details-flex">
         <!-- <h3>{{ selectedScriptProp.name }}</h3> -->
         <p><strong>Hits: </strong> {{ selectedScriptProp.hits }}</p>
         <p><strong>Likes: </strong> {{ selectedScriptProp.likes }}</p>
-        <p><strong>Developers: </strong> {{ selectedScriptProp.developers }}</p>
+        <p><strong>Developers: </strong>
+          <span *ngFor="let developer of selectedScriptProp.developers; let i = index">
+            <a href="javascript:void(0)" (click)="openDeveloperDialog(developer)" >
+              {{ developer}}
+            </a>
+          </span>
+
+        </p>
         <p><strong>Last Modified: </strong> {{ selectedScriptProp.lastModified }}</p>
       </div>
 
@@ -20,7 +32,6 @@
     <button (click)="showComments = !showComments" class="toggle-button">
       {{ showComments ? 'Hide Comments' : 'Show Comments' }}
     </button>
-    <button class="toggle-button">Developer's Profile</button>
     <button class="toggle-button">Script Helper</button>
   </div>
 
@@ -69,5 +80,11 @@
     </div>
 
   </div>
+
+  @if(showDeveloperProfileClicked){
+  <div class="developer-profile">
+    <app-selected-dev-profile [selectedDevProfile]="selectedDevProfile" (onCloseEvent)="hideDevProfile()"></app-selected-dev-profile>
+  </div>
+  }
 
 }

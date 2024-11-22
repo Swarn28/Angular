@@ -10,6 +10,7 @@ p {
 
 .container {
   padding: 15px;
+  width: 50%
 }
 
 .script-card {
@@ -151,4 +152,18 @@ em{
   font-weight: bold;
   margin-bottom: 10px;
   color: #333;
+  }
+
+  .star-container {
+    display: flex;
+    gap: 5px;
+  }
+
+  .star {
+    font-size: 2rem;
+    color: gray;
+  }
+
+  .star.filled {
+    color: gold;
   }
