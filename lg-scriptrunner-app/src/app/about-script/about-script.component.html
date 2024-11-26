@@ -7,7 +7,9 @@
   <span *ngFor="let star of starArray; index as i" class="star" [class.filled]="i < selectedScriptProp.rating.valueOf()">
     ★
   </span>
+  <button class="like-button">Like</button>
 </div>
+
     <div class="fullDetails">
       <div class="script-details-flex">
         <!-- <h3>{{ selectedScriptProp.name }}</h3> -->
@@ -33,6 +35,8 @@
       {{ showComments ? 'Hide Comments' : 'Show Comments' }}
     </button>
     <button class="toggle-button">Script Helper</button>
+    <button (click)="download()" class="toggle-button">Download Output</button>
+
   </div>
 
   <div class="showArguments">

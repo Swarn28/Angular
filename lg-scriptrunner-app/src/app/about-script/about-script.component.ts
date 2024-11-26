@@ -84,4 +84,12 @@ export class AboutScriptComponent {
     this.showDeveloperProfileClicked = false;
   }
 
+  download(): void {
+    if (this.selectedScriptProp.arguments[1].value) {
+      this.sharedService.downloadFile(this.selectedScriptProp.arguments[1].value);
+    } else {
+      alert('Please enter a output file name.');
+    }
+  }
+
 }

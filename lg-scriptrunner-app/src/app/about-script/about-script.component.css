@@ -167,3 +167,16 @@ em{
   .star.filled {
     color: gold;
   }
+
+  .like-button {
+    padding: 5px 5px;
+    background-color: #2274b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .like-button:hover {
+    background-color: #450ec6;
+  }
