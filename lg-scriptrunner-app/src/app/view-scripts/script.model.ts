@@ -3,7 +3,7 @@ import { Argument } from './argument.model';
 // src/app/shared/script.model.ts
 
 export interface Script {
-  name: string;
+  name: string; // display Name
   id: Number;
   description: string;
   type: string;

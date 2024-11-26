@@ -45,9 +45,106 @@
 }
 
 p{
-  color: white;
+  color: black;
 }
 
 .dialog-actions button:active {
   background-color: grey;
+}
+
+.script-form {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: rgb(222, 228, 221);
+  border: 1px solid #120a0a;
+  padding: 20px;
+  width: 950px;
+  height: 650px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+  color: #120a0a;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #120a0a;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #1a5e8a;
+}
+
+.dialog-backdrop {
+  margin-top: 20px;
+}
+
+.dialog {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.dialog-actions button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-actions button:hover {
+  background-color: #1a5e8a;
+}
+
+h2{
+  color: black;
+}
+
+h3{
+  color: #120a0a;
+}
+
+.dialog {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: rgb(222, 228, 221);
+  border: 1px solid #120a0a;
+  padding: 20px;
+  width: 950px;
+  height: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }

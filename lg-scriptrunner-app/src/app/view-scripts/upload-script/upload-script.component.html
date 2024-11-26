@@ -1,19 +1,68 @@
 @if(isUploadEnabled){
-<!-- Trigger Button -->
-<!-- <button class="upload-button" (click)="openDialog()">Upload Script</button> -->
+  <h2>Script Form</h2>
+  <div class="script-form">
+    <form (ngSubmit)="saveForm()">
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="scriptInput.name" name="name" required />
+      </label>
 
-<!-- Dialog -->
-<div class="dialog-backdrop">
-  <div class="dialog">
-    <h3>Upload Script File</h3>
-    <input type="file" (change)="onFileSelected($event)" />
-    <p *ngIf="uploadedFileName">Selected file: {{ uploadedFileName }}</p>
+      <label>
+        Description:
+        <textarea [(ngModel)]="scriptInput.description" name="description" required></textarea>
+      </label>
 
-    <div class="dialog-actions">
-      <button (click)="uploadFile()">Upload</button>
-      <button (click)="validateFile()" class="validate-button">Validate</button>
-      <button (click)="closeDialog()">Close</button>
-    </div>
+      <label>
+        Type:
+        <input type="text" [(ngModel)]="scriptInput.type" name="type" required />
+      </label>
+
+      <label>
+        Script Name:
+        <input
+          type="text"
+          [(ngModel)]="scriptInput.scriptName"
+          name="scriptName"
+          required
+        />
+      </label>
+
+      <label>
+        Arguments:
+        <input
+          type="number"
+          [(ngModel)]="scriptInput.arguments"
+          name="arguments"
+          required
+        />
+      </label>
+
+      <label>
+        Developers:
+        <input
+        type="text"
+        #developerInput
+        placeholder="Enter developers separated by commas"
+        (blur)="updateDevelopers(developerInput.value)"
+      />
+      </label>
+
+      <!-- Embedded Upload Section -->
+     <!--  <div class="dialog-backdrop">
+        <div class="dialog"> -->
+          <h3>Upload Script File</h3>
+          <input type="file" (change)="onFileSelected($event)" />
+          <p *ngIf="uploadedFileName">Selected file: {{ uploadedFileName }}</p>
+
+          <div class="dialog-actions">
+            <button type="button" (click)="uploadFile()">Upload</button>
+            <button type="button" (click)="validateFile()">Validate</button>
+            <button type="button" (click)="closeDialog()">Close</button>
+          </div>
+        <!-- </div>
+      </div> -->
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
   </div>
-</div>
 }
