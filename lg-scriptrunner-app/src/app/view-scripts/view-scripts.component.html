@@ -6,8 +6,8 @@
   <h1 class="table-title">Scripts Available</h1>
   <div class="optional">
   @if(userType === 'ADMIN'){
-    <button class="add-script-button">Add Script</button>
-    <button class="audit-button">Audit</button>
+    <button class="add-script-button" (click)="enableUpload()">Add Script</button>
+    <button class="audit-button" (click)="enableAudit()">Audit</button>
     <button class="review-button">Review</button>
 
   }
@@ -42,4 +42,8 @@
 
 <div class="header-container">
   <button class="logout-button" (click)="onLogout()">Logout</button>
+</div>
+
+<div class="upload-option">
+  <app-upload-script (isUploadDisabled)="disableUpload()" [isUploadEnabled]="isUploadEnabled"></app-upload-script>
 </div>

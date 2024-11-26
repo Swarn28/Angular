@@ -1,0 +1,19 @@
+@if(isUploadEnabled){
+<!-- Trigger Button -->
+<!-- <button class="upload-button" (click)="openDialog()">Upload Script</button> -->
+
+<!-- Dialog -->
+<div class="dialog-backdrop">
+  <div class="dialog">
+    <h3>Upload Script File</h3>
+    <input type="file" (change)="onFileSelected($event)" />
+    <p *ngIf="uploadedFileName">Selected file: {{ uploadedFileName }}</p>
+
+    <div class="dialog-actions">
+      <button (click)="uploadFile()">Upload</button>
+      <button (click)="validateFile()" class="validate-button">Validate</button>
+      <button (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+</div>
+}

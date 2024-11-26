@@ -7,13 +7,15 @@ import { AboutScriptComponent } from './about-script/about-script.component';
 import { Script } from './view-scripts/script.model';
 import { ScriptAdditionalProps } from './about-script/scriptAdditionalProperties.model';
 import { FormsModule } from '@angular/forms';
+import { AuditDetailsComponent } from "./audit-details/audit-details.component";
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, ViewScriptsComponent,AboutScriptComponent,FormsModule],
+  imports: [RouterOutlet, LoginComponent, ViewScriptsComponent,
+     AboutScriptComponent, FormsModule, AuditDetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -22,6 +24,7 @@ export class AppComponent {
   isLoginDone:boolean= false;
   isLogoutDone:boolean = false;
   selectedScriptProp!: ScriptAdditionalProps;
+  isAuditEnabled: boolean = false;
 
   isAboutScriptEnabled:boolean = false;
 
@@ -45,6 +48,12 @@ export class AppComponent {
     this.selectedScriptProp = this.sharedService.getSelectedScriptProp();
   }
 
+  onAuditEnable(){
+    this.isAuditEnabled = true;
+  }
 
+  disableAuditEvent(){
+    this.isAuditEnabled = false;
+  }
 
 }

@@ -1,0 +1,25 @@
+<!-- <div>
+  <button (click)="openDialog()">Show Audit Details</button>
+</div> -->
+
+<!-- Dialog Box -->
+<div class="dialog">
+  <h3>Audit Details</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Start Time</th>
+        <th>Script Name</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let audit of auditList">
+        <td>{{ audit.startTime }}</td>
+        <td>{{ audit.scriptName }}</td>
+        <td>{{ audit.userName }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="closeDialog()">Close</button>
+</div>

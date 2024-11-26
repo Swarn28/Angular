@@ -7,11 +7,16 @@
 @if(isLoginDone && !isLogoutDone){
 <div class="main-container">
   <div class="app-view-scripts-container">
-    <app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()"></app-view-scripts>
+    <app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()" (isAuditEnabledEvent)="onAuditEnable()"></app-view-scripts>
   </div>
   <div class="app-about-scripts-container">
     <app-about-script class="about-script" [isEnabled]="isAboutScriptEnabled" [selectedScriptProp]="selectedScriptProp">
     </app-about-script>
   </div>
+  @if(isAuditEnabled){
+  <div class = "audit-details">
+    <app-audit-details (disableAuditEvent)="disableAuditEvent()"></app-audit-details>
+  </div>
+  }
 </div>
 }

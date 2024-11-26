@@ -6,12 +6,13 @@ import { Script } from './script.model';
 import { ScriptAdditionalProps } from '../about-script/scriptAdditionalProperties.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { DevProfile } from '../about-script/selected-dev-profile/dev-profile-model';
+import { UploadScriptComponent } from './upload-script/upload-script.component';
 
 
 @Component({
   selector: 'app-view-scripts',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,UploadScriptComponent],
   templateUrl: './view-scripts.component.html',
   styleUrl: './view-scripts.component.css',
   encapsulation: ViewEncapsulation.None
@@ -21,12 +22,15 @@ export class ViewScriptsComponent {
   scripts: Script[] = [];
   userType!: UserType;
   selectedIndex!:Number;
+  isUploadEnabled:boolean = false;
+  displayName:string='';
   private scriptProps: ScriptAdditionalProps[] = [];
 
   public selectedScriptProp!: ScriptAdditionalProps;
 
   @Output() logoutDone = new EventEmitter<boolean>;
   @Output() rowSelected = new EventEmitter<void>;
+  @Output() isAuditEnabledEvent = new EventEmitter<void>;
   private httpClient = inject(HttpClient);
 
 
@@ -82,8 +86,8 @@ export class ViewScriptsComponent {
   executeScript(script: any): void {
     // For now, just log the script name. You can replace this with actual execution logic.
     console.log(`Executing script: ${script.name}`);
-    alert(`Executing script: ${script.name}`);
     const { apiUrl, params } = this.populateObject();
+   // alert(`Executing script: ${script.name}`);
 
     // Make HTTP GET request
     this.httpClient.get<string>(apiUrl, {
@@ -92,14 +96,17 @@ export class ViewScriptsComponent {
     }).subscribe({
       next: (response) => {
         if (response === 'SUCCESS') {
+          this.scripts.find(script => script.name === this.displayName)!.status = 'Completed';
           alert('Script executed successfully!');
         }
       },
       error: (error) => {
+        this.scripts.find(script => script.name === this.displayName)!.status = 'Errored';
         console.error('Error executing script:', error);
         alert('An error occurred while executing the script.');
       },
       complete: () => {
+        this.scripts.find(script => script.name === this.displayName)!.status = 'Completed';
         console.log('Request completed.');
       }
     });
@@ -108,6 +115,7 @@ export class ViewScriptsComponent {
 
   public populateObject() {
     let script_name = this.sharedService.getSelectedScript().scriptName;
+    this.displayName = this.sharedService.getSelectedScript().name;
     let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
     let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
     let parameters = param2 + " " + param3;
@@ -115,6 +123,7 @@ export class ViewScriptsComponent {
     let server_type = "UNIX";
 
     console.log("execute script " + script_name + " , " + parameters + " , " + hostname + " , " + server_type);
+    this.scripts.find(script => script.name === this.displayName)!.status = 'Processing';
 
 
     // API URL
@@ -317,6 +326,18 @@ export class ViewScriptsComponent {
         this.sharedService.setSelectedScriptProp(this.selectedScriptProp);
        }
 
+  }
+
+  enableUpload(){
+    this.isUploadEnabled = true;
+  }
+
+  disableUpload(){
+    this.isUploadEnabled = false;
+  }
+
+  enableAudit(){
+    this.isAuditEnabledEvent.emit();
   }
 
 }
