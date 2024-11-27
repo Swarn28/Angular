@@ -26,6 +26,8 @@ export class UploadScriptComponent {
   @Input({required:true}) isUploadEnabled: boolean = false;
   @Output() isUploadDisabled = new EventEmitter<void>();
 
+  isSubmitButtonDisabled:boolean = true;
+
 //  uploadedFileName = '';
 
   closeDialog(): void {
@@ -53,6 +55,7 @@ export class UploadScriptComponent {
 
   async validateFile(): Promise<void> {
     if (this.uploadedFileName) {
+      this.isSubmitButtonDisabled = false;
       await this.sleep(3000);
       alert('Validation Successfull');
       //this.closeDialog();
@@ -89,4 +92,10 @@ export class UploadScriptComponent {
       this.scriptInput.developers = [];
     }
   }
+
+
+  onSubmit(){
+    alert("Submitting..")
+  }
+
 }

@@ -62,7 +62,9 @@
         <!-- </div>
       </div> -->
 
-      <button type="submit" class="submit-btn">Submit</button>
     </form>
+
+    <button class="submit-btn" type="submit" (click)="onSubmit()" [disabled]=isSubmitButtonDisabled>Submit</button>
+
   </div>
 }

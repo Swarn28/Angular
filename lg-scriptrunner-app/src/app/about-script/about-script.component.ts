@@ -92,4 +92,12 @@ export class AboutScriptComponent {
     }
   }
 
+  sendEmail(){
+    alert("Email Sent.. !!");
+  }
+
+  schedule(){
+    alert("Work is still in progress, give us more time.")
+  }
+
 }
