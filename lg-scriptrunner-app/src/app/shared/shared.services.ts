@@ -1,9 +1,9 @@
+import { ValidationResponse } from './validation-response-model';
 import { inject, Injectable } from "@angular/core";
 import { UserType } from "./UserTypeEnum";
 import { Script } from "../view-scripts/script.model";
 import { ScriptAdditionalProps } from "../about-script/scriptAdditionalProperties.model";
-import { HttpClient, HttpParams } from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn:'root'})
 export class SharedService{
