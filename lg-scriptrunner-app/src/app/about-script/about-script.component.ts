@@ -35,7 +35,7 @@ export class AboutScriptComponent {
   }
 
   updateArgumentValue(index: number): void {
-    this.selectedScriptProp.arguments[index].value = '';
+    this.selectedScriptProp.userArguments[index].value = '';
   }
 
   openDeveloperDialog(selectedDevName: string){
@@ -85,8 +85,8 @@ export class AboutScriptComponent {
   }
 
   download(): void {
-    if (this.selectedScriptProp.arguments[1].value) {
-      this.sharedService.downloadFile(this.selectedScriptProp.arguments[1].value);
+    if (this.selectedScriptProp.userArguments.find((arg) => arg.name === 'outputPath')) {
+      this.sharedService.downloadFile(this.selectedScriptProp.userArguments.find((arg) => arg.name === 'outputPath')?.value ?? '');
     } else {
       alert('Please enter a output file name.');
     }

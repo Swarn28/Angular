@@ -1,3 +1,4 @@
+import { Argument } from './argument.model';
 import { UserType } from './../shared/UserTypeEnum';
 import { Component, EventEmitter, inject, Output, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -5,7 +6,6 @@ import { SharedService } from '../shared/shared.services';
 import { Script } from './script.model';
 import { ScriptAdditionalProps } from '../about-script/scriptAdditionalProperties.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { DevProfile } from '../about-script/selected-dev-profile/dev-profile-model';
 import { UploadScriptComponent } from './upload-script/upload-script.component';
 
 
@@ -24,6 +24,7 @@ export class ViewScriptsComponent {
   selectedIndex!:Number;
   isUploadEnabled:boolean = false;
   displayName:string='';
+  hostName:string='';
   private scriptProps: ScriptAdditionalProps[] = [];
 
   public selectedScriptProp!: ScriptAdditionalProps;
@@ -50,8 +51,8 @@ export class ViewScriptsComponent {
   initializeScripts(): void {
     this.scripts = [
       {
-        name: 'Backup Script', description: 'Performs system backup', type: 'Shell', status: 'Inactive',
-        id: 1, scriptName: "backup.ksh"
+        name: 'OS Performance', description: 'Test OS performance', type: 'Python', status: 'Inactive',
+        id: 1, scriptName: "os_performance.py"
 
       },
       {
@@ -99,6 +100,10 @@ export class ViewScriptsComponent {
           this.scripts.find(script => script.name === this.displayName)!.status = 'Completed';
           alert('Script executed successfully!');
         }
+        else{
+          this.scripts.find(script => script.name === this.displayName)!.status = 'Errored';
+        alert('Received Failure.');
+        }
       },
       error: (error) => {
         this.scripts.find(script => script.name === this.displayName)!.status = 'Errored';
@@ -106,7 +111,6 @@ export class ViewScriptsComponent {
         alert('An error occurred while executing the script.');
       },
       complete: () => {
-        this.scripts.find(script => script.name === this.displayName)!.status = 'Completed';
         console.log('Request completed.');
       }
     });
@@ -116,13 +120,20 @@ export class ViewScriptsComponent {
   public populateObject() {
     let script_name = this.sharedService.getSelectedScript().scriptName;
     this.displayName = this.sharedService.getSelectedScript().name;
-    let param2 = this.sharedService.getSelectedScriptProp().arguments[0].value;
-    let param3 = this.sharedService.getSelectedScriptProp().arguments[1].value;
-    let parameters = param2 + " " + param3;
-    let hostname = this.sharedService.getSelectedScriptProp().arguments[2].value;
+    let parameters ='';
+
+    const args: Argument[] = this.sharedService.getSelectedScriptProp().userArguments;
+
+    const concatenatedString = args
+    .filter(arg => arg.name !== 'Server IP')
+    .map(arg => arg.value)
+    .join(' ');
+
+    parameters = concatenatedString;
+    this.hostName = this.sharedService.getSelectedScriptProp().userArguments.find(arg => arg.name === 'Server IP')?.value ?? '';
     let server_type = "UNIX";
 
-    console.log("execute script " + script_name + " , " + parameters + " , " + hostname + " , " + server_type);
+    console.log("execute script " + script_name + " , " + parameters + " , " + this.hostName + " , " + server_type);
     this.scripts.find(script => script.name === this.displayName)!.status = 'Processing';
 
 
@@ -133,9 +144,11 @@ export class ViewScriptsComponent {
     // Create HttpParams object
     const params = new HttpParams()
       .set('script_name', script_name)
-      .set('hostname', hostname)
       .set('server_type', server_type)
+      .set('hostname',this.hostName)
       .set('parameters', parameters);
+
+
     return { apiUrl, params };
   }
 
@@ -177,20 +190,16 @@ export class ViewScriptsComponent {
   initializeScriptsProps(): void {
     this.scriptProps = [
       {
-        name: 'Backup Script',
+        name: 'OS Performance',
         id: 1,
-        arguments: [
-          { name: 'inputPath',
-            description: 'Path to the input data directory',
-            value: '/home/dir',
-            isMandatory: true },
+        userArguments: [
           { name: 'outputPath',
             description: 'Path to the output data directory',
             value: 'MeterInstalled_User.txt',
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
-              value: 'ussmfedt16',
+              value: 'ussmfedt160036.am.bm.net',
               isMandatory: true }
         ],
         hits: 1500,
@@ -214,7 +223,7 @@ export class ViewScriptsComponent {
       {
         name: 'Report Generator',
         id: 4,
-        arguments: [
+        userArguments: [
           { name: 'inputPath',
             description: 'Path to the input data directory',
             value: '/data/input/',
@@ -249,7 +258,7 @@ export class ViewScriptsComponent {
       {
         name: 'Log Archiver',
         id: 6,
-        arguments: [
+        userArguments: [
           { name: 'inputPath',
             description: 'Path to the input data directory',
             value: '/data/input/',
@@ -284,12 +293,12 @@ export class ViewScriptsComponent {
       {
         name: 'Add Two Numbers',
         id: 7,
-        arguments: [
+        userArguments: [
           { name: 'First Number',
             description: 'Enter First Number',
             value: '2',
             isMandatory: true },
-          { name: 'Secons Number',
+          { name: 'Second Number',
             description: 'Enter Second Number',
             value: '3',
             isMandatory: true },

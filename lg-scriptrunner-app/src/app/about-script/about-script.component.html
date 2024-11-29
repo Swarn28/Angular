@@ -45,12 +45,12 @@
       @if(showArguments){
       <h4>Arguments:</h4>
       <ul>
-        <li *ngFor="let arg of selectedScriptProp.arguments;let i = index">
+        <li *ngFor="let arg of selectedScriptProp.userArguments;let i = index">
           <p><strong>{{ arg.name }}</strong> ({{ arg.description }})</p>
           <!-- <p>{{ arg.isMandatory ? 'Mandatory' : 'Optional' }}</p> -->
           <input
           type="text"
-          [(ngModel)]="selectedScriptProp.arguments[i].value"
+          [(ngModel)]="selectedScriptProp.userArguments[i].value"
           placeholder="Enter value"
           class="arg-input"
         />

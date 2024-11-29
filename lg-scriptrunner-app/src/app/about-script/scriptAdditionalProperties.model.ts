@@ -5,7 +5,7 @@ import { Argument } from '../view-scripts/argument.model';
 export interface ScriptAdditionalProps {
   name: string;
   id: Number;
-  arguments: Argument[];
+  userArguments: Argument[];
   hits: Number;
   likes: Number;
   rating: Number;
