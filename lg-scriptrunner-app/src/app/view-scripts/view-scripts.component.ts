@@ -195,7 +195,7 @@ export class ViewScriptsComponent {
         userArguments: [
           { name: 'outputPath',
             description: 'Path to the output data directory',
-            value: 'MeterInstalled_User.txt',
+            value: 'OSPerformance.txt',
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
@@ -221,8 +221,113 @@ export class ViewScriptsComponent {
         lastModified: new Date("10-10-24").toISOString().split('T')[0]
       },
       {
+        name: 'Cleanup Script',
+        id: 2,
+        userArguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: 'MeterInstalled_User.txt',
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
+        ],
+        hits: 103,
+        rating: 2,
+        likes: 2,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ],
+        developers: ["Shankar Jain", "Meera Naik"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
+      },
+      {
+        name: 'Deployment Script',
+        id: 3,
+        userArguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: 'SampleOutput_User.txt',
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
+        ],
+        hits: 9,
+        rating: 3,
+        likes: 2,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ],
+        developers: ["Shankar Jain", "Meera Naik"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
+      },
+      {
         name: 'Report Generator',
         id: 4,
+        userArguments: [
+          { name: 'inputPath',
+            description: 'Path to the input data directory',
+            value: '/data/input/',
+            isMandatory: true },
+          { name: 'outputPath',
+            description: 'Path to the output data directory',
+            value: 'SampleOutput_User.txt',
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: '10.6.160.35',
+              isMandatory: true }
+        ],
+        hits: 100,
+        rating: 4,
+        likes: 20,
+        comments: [
+          {
+            commentBy: 'Alice',
+            comment: 'Great script for data processing!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bob',
+            comment: 'Needs optimization for large datasets.',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ],
+        developers: ["Shankar Jain", "Meera Naik"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0]
+      },
+      {
+        name: 'Database Migration',
+        id: 5,
         userArguments: [
           { name: 'inputPath',
             description: 'Path to the input data directory',

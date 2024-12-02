@@ -15,7 +15,7 @@ export class AuditDetailsComponent {
   @Output() disableAuditEvent= new EventEmitter<void>();
 
   auditList: AuditDetails[] = [
-    { startTime: '2024-10-18T10:30:00', scriptName: 'Cleanup Script', userName: 'swarn.bedi@landisgyr.com' },
+    { startTime: '2024-10-18T10:30:00', scriptName: 'Test OS performance', userName: 'swarn.bedi@landisgyr.com' },
     { startTime: '2024-11-23T11:23:03', scriptName: 'Add Two Numbers', userName: 'nishu.jain1@landisgyr.com' },
     { startTime: '2024-11-2T13:33:22', scriptName: 'Log Archiver', userName: 'prashant.chauhan1@landisgyr.com' },
     { startTime: '2024-11-26T17:14:64', scriptName: '	Backup Script', userName: 'gautham.govind@landisgyr.com' },
