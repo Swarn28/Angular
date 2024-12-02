@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SelectedDevProfileComponent } from './selected-dev-profile/selected-dev-profile.component';
 import { DevProfile } from './selected-dev-profile/dev-profile-model';
+import { ScriptInfoComponent } from "./script-info/script-info.component";
 
 
 @Component({
   selector: 'app-about-script',
   standalone: true,
-  imports: [CommonModule,FormsModule,SelectedDevProfileComponent],
+  imports: [CommonModule, FormsModule, SelectedDevProfileComponent, ScriptInfoComponent],
   templateUrl: './about-script.component.html',
   styleUrl: './about-script.component.css'
 })
@@ -26,6 +27,7 @@ export class AboutScriptComponent {
   starArray: number[] = Array(5).fill(0);
   showDeveloperProfileClicked: boolean = false;
   selectedDevProfile!: DevProfile;
+  isShowScriptInfoEnabled:boolean = false;
 
   showArguments = false;
   showComments = false;
@@ -54,28 +56,32 @@ export class AboutScriptComponent {
         email: "shankar@landigyr.com",
         languages: ["C++", "Shell"],
         photo: "photo_shankar.jpg",
-        reportingManager: "Abu Kareem"
+        reportingManager: "Abu Kareem",
+        afa_credits:245
       },
       {
         name: "Swami Renkat",
         email: "swami@landigyr.com",
         languages: ["Java", "SQL"],
         photo: "photo_swami.jpg",
-        reportingManager: "Rakhi"
+        reportingManager: "Rakhi",
+        afa_credits:163
       },
       {
           name: "Meera Naik",
           email: "meera@landigyr.com",
           languages: ["Middleware"],
           photo: "photo_meera.jpg",
-          reportingManager: "Rohan"
+          reportingManager: "Rohan",
+          afa_credits:428
       },
       {
         name: "Rohan K",
         email: "rohan@landigyr.com",
         languages: ["C++", "Shell"],
         photo: "photo.jpg",
-        reportingManager: "Abu Kareem"
+        reportingManager: "Abu Kareem",
+        afa_credits:315
       }
     ];
   }
@@ -98,6 +104,14 @@ export class AboutScriptComponent {
 
   schedule(){
     alert("Work is still in progress, give us more time.")
+  }
+
+  scriptInfo(){
+    this.isShowScriptInfoEnabled = true;
+  }
+
+  hideScriptInfo(){
+    this.isShowScriptInfoEnabled = false;
   }
 
 }

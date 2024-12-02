@@ -1,0 +1,25 @@
+@if(isScriptInfoEnabled){
+  <div class="script-form">
+    <button class="submit-btn" (click)="showReadme()">Show ReadMe</button>
+
+    @if(showReadMe){
+    <p>
+      Please read this file for all details.
+    </p>
+    <p>
+      This is dummy read me. It will basically show the readMe file added by the developer
+      for their script. The file will have the details to execute the script, it will also
+      contain the parameters requiered to run that script, output file path.
+    </p>
+    <p>Parameters List: </p>
+    <p>outputFilePath - Give name of the output file, in which you want to see the logs/ end results.</p>
+    <p>server ip - Give hostname/ip of the server you want to run this script.</p>
+
+  }
+
+    <button class="submit-btn" (click)="showScript()">Show Script</button>
+
+    <button class="submit-btn" type="submit" (click)="closeDialog()">Close</button>
+
+  </div>
+}

@@ -4,4 +4,5 @@ export interface DevProfile {
   reportingManager: string;
   email: string;
   languages: string[];
+  afa_credits: Number;
 }

@@ -7,14 +7,15 @@
   <span *ngFor="let star of starArray; index as i" class="star" [class.filled]="i < selectedScriptProp.rating.valueOf()">
     ★
   </span>
-  <button class="like-button">Like</button>
 </div>
 
     <div class="fullDetails">
       <div class="script-details-flex">
         <!-- <h3>{{ selectedScriptProp.name }}</h3> -->
         <p><strong>Hits: </strong> {{ selectedScriptProp.hits }}</p>
-        <p><strong>Likes: </strong> {{ selectedScriptProp.likes }}</p>
+        <p><strong>Likes: </strong> {{ selectedScriptProp.likes }}
+        <button class="like-button">Like</button>
+        </p>
         <p><strong>Developers: </strong>
           <span *ngFor="let developer of selectedScriptProp.developers; let i = index">
             <a href="javascript:void(0)" (click)="openDeveloperDialog(developer)" >
@@ -34,7 +35,7 @@
     <button (click)="showComments = !showComments" class="toggle-button">
       {{ showComments ? 'Hide Comments' : 'Show Comments' }}
     </button>
-    <button class="toggle-button">Script Helper</button>
+    <button class="toggle-button" (click)="scriptInfo()">Script Info</button>
     <button (click)="download()" class="toggle-button">Download Output</button>
     <button (click)="sendEmail()" class="toggle-button">Send Email</button>
     <button (click)="schedule()" class="toggle-button">Schedule Script</button>
@@ -91,6 +92,12 @@
   <div class="developer-profile">
     <app-selected-dev-profile [selectedDevProfile]="selectedDevProfile" (onCloseEvent)="hideDevProfile()"></app-selected-dev-profile>
   </div>
+  }
+
+  @if(isShowScriptInfoEnabled){
+    <div class="showScript-info">
+      <app-script-info [isScriptInfoEnabled]="isShowScriptInfoEnabled" (hideScriptInfoEvent)="hideScriptInfo()"></app-script-info>
+    </div>
   }
 
 }
