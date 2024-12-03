@@ -77,14 +77,14 @@
 
 /*add script button */
 .add-script-button {
-  padding: 15px 30px;
+  padding: 15px 15px;
   background-color: #2274b2;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: -55px;
-  margin-left: 5px;
+  margin-left: 8px;
   position: absolute;
   right: 880px;
 }
@@ -175,4 +175,17 @@ td {
 .optional {
   position: relative;
   left: 15%;
+}
+
+.add-server-button {
+  padding: 15px 45px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-left: 8px;
+  position: absolute;
+  right: 1235px;
 }

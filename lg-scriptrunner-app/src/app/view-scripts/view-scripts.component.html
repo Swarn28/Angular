@@ -6,10 +6,10 @@
   <h1 class="table-title">Scripts Available</h1>
   <div class="optional">
   @if(userType === 'ADMIN'){
-    <button class="add-script-button" (click)="enableUpload()">Add Script</button>
+    <button class="add-script-button" (click)="enableUpload()">Register Script</button>
     <button class="audit-button" (click)="enableAudit()">Audit</button>
-    <button class="review-button">Review</button>
-
+    <button class="review-button" (click)="enableReview()">Review</button>
+    <button class="add-server-button" (click)="registerServer()">Register Server</button>
   }
 </div>
   <table class="scripts-table">

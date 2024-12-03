@@ -114,4 +114,8 @@ export class AboutScriptComponent {
     this.isShowScriptInfoEnabled = false;
   }
 
+  addComment(){
+    alert("Work is still in progress, give us more time.");
+  }
+
 }

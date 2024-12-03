@@ -69,8 +69,8 @@ export class ViewScriptsComponent {
 
       },
       {
-        name: 'Database Migration', description: 'Migrates database schemas', type: 'SQL', status: 'Inactive',
-        id: 5,scriptName: "DatabaseMigration.py"
+        name: 'Database Space', description: 'Checks database space', type: 'Bash', status: 'Inactive',
+        id: 5,scriptName: "check_db_space.sh"
       },
       {
         name: 'Log Archiver', description: 'Archives log files', type: 'Bash', status: 'Inactive',
@@ -326,20 +326,16 @@ export class ViewScriptsComponent {
         lastModified: new Date("10-10-24").toISOString().split('T')[0]
       },
       {
-        name: 'Database Migration',
+        name: 'Database Space',
         id: 5,
         userArguments: [
-          { name: 'inputPath',
-            description: 'Path to the input data directory',
-            value: '/data/input/',
-            isMandatory: true },
           { name: 'outputPath',
             description: 'Path to the output data directory',
             value: 'SampleOutput_User.txt',
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
-              value: '10.6.160.35',
+              value: 'usiadidt002',
               isMandatory: true }
         ],
         hits: 100,
@@ -452,6 +448,14 @@ export class ViewScriptsComponent {
 
   enableAudit(){
     this.isAuditEnabledEvent.emit();
+  }
+
+  enableReview(){
+    alert("Work is still under progress, give us more time.");
+  }
+
+  registerServer(){
+    alert("Work is still under progress, give us more time.");
   }
 
 }
