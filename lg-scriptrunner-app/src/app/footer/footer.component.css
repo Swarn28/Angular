@@ -1,0 +1,32 @@
+.footer {
+  background-color: #4caf50; /* Background color */
+  padding: 12px;
+  display: flex;
+  justify-content: space-between; /* Spread left and right sections */
+  align-items: flex-start; /* Align items at the top */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  width: 100%; /* Ensure full width of footer */
+  display: flex; /* Flex container for right and left sides */
+  justify-content: space-between;
+}
+
+.right-sided,
+.left-sided {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-sided{
+  padding: 0 20px;
+}
+
+span {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ede5e5;
+}

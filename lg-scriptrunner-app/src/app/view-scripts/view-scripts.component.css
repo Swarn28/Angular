@@ -86,7 +86,7 @@
   margin-top: -55px;
   margin-left: 8px;
   position: absolute;
-  right: 880px;
+  right: 980px;
 }
 
 .add-script-button:hover {
@@ -103,7 +103,7 @@
   margin-top: -55px;
   margin-left: 25px;
   position: absolute;
-  right: 1010px;
+  right: 1120px;
 }
 
 .audit-button:hover {
@@ -120,7 +120,7 @@
   margin-top: -55px;
   margin-left: 25px;
   position: absolute;
-  right: 1110px;
+  right: 1230px;
 }
 
 .review-button:hover {
@@ -187,5 +187,26 @@ td {
   margin-top: -55px;
   margin-left: 8px;
   position: absolute;
-  right: 1235px;
+  left: 415px;
+}
+
+.insights-button {
+  padding: 15px 45px;
+  background-color: #2274b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-left: 8px;
+  position: absolute;
+  left: 265px;
+}
+
+.add-server-button:hover {
+  background-color: #450ec6;
+}
+
+.insights-button:hover {
+  background-color: #450ec6;
 }

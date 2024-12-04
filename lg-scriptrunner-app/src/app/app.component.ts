@@ -8,6 +8,8 @@ import { Script } from './view-scripts/script.model';
 import { ScriptAdditionalProps } from './about-script/scriptAdditionalProperties.model';
 import { FormsModule } from '@angular/forms';
 import { AuditDetailsComponent } from "./audit-details/audit-details.component";
+import { FooterComponent } from "./footer/footer.component";
+import { InsightsComponent } from "./insights/insights.component";
 
 
 
@@ -15,7 +17,7 @@ import { AuditDetailsComponent } from "./audit-details/audit-details.component";
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LoginComponent, ViewScriptsComponent,
-     AboutScriptComponent, FormsModule, AuditDetailsComponent],
+    AboutScriptComponent, FormsModule, AuditDetailsComponent, FooterComponent, InsightsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -25,6 +27,7 @@ export class AppComponent {
   isLogoutDone:boolean = false;
   selectedScriptProp!: ScriptAdditionalProps;
   isAuditEnabled: boolean = false;
+  isInsightsEnabled: boolean = false;
 
   isAboutScriptEnabled:boolean = false;
 
@@ -54,6 +57,14 @@ export class AppComponent {
 
   disableAuditEvent(){
     this.isAuditEnabled = false;
+  }
+
+  onInsightEnabled(){
+    this.isInsightsEnabled = true;
+  }
+
+  disableInsights(){
+    this.isInsightsEnabled = false;
   }
 
 }

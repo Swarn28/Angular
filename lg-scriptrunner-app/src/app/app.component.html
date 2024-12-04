@@ -7,7 +7,8 @@
 @if(isLoginDone && !isLogoutDone){
 <div class="main-container">
   <div class="app-view-scripts-container">
-    <app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()" (isAuditEnabledEvent)="onAuditEnable()"></app-view-scripts>
+    <app-view-scripts (logoutDone)="onLogout()" (rowSelected)="onAboutScript()"
+     (isAuditEnabledEvent)="onAuditEnable()" (isInsightsEnabledEvent)="onInsightEnabled()"></app-view-scripts>
   </div>
   <div class="app-about-scripts-container">
     <app-about-script class="about-script" [isEnabled]="isAboutScriptEnabled" [selectedScriptProp]="selectedScriptProp">
@@ -18,5 +19,16 @@
     <app-audit-details (disableAuditEvent)="disableAuditEvent()"></app-audit-details>
   </div>
   }
+
+  @if(isInsightsEnabled){
+    <div>
+      <app-insights (disableInsights)="disableInsights()"></app-insights>
+    </div>
+  }
+
 </div>
 }
+
+<div class="footer">
+  <app-footer></app-footer>
+</div>

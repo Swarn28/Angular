@@ -32,6 +32,8 @@ export class ViewScriptsComponent {
   @Output() logoutDone = new EventEmitter<boolean>;
   @Output() rowSelected = new EventEmitter<void>;
   @Output() isAuditEnabledEvent = new EventEmitter<void>;
+  @Output() isInsightsEnabledEvent = new EventEmitter<void>;
+
   private httpClient = inject(HttpClient);
 
 
@@ -331,7 +333,7 @@ export class ViewScriptsComponent {
         userArguments: [
           { name: 'outputPath',
             description: 'Path to the output data directory',
-            value: 'SampleOutput_User.txt',
+            value: 'DBSpace.txt',
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
@@ -456,6 +458,10 @@ export class ViewScriptsComponent {
 
   registerServer(){
     alert("Work is still under progress, give us more time.");
+  }
+
+  insights(){
+    this.isInsightsEnabledEvent.emit();
   }
 
 }

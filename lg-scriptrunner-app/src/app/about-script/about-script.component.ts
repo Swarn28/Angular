@@ -53,7 +53,7 @@ export class AboutScriptComponent {
     this.developerProfiles = [
       {
         name: "Shankar Jain",
-        email: "shankar@landigyr.com",
+        email: "shankar@landisgyr.com",
         languages: ["C++", "Shell"],
         photo: "photo_shankar.jpg",
         reportingManager: "Abu Kareem",
@@ -61,7 +61,7 @@ export class AboutScriptComponent {
       },
       {
         name: "Swami Renkat",
-        email: "swami@landigyr.com",
+        email: "swami@landisgyr.com",
         languages: ["Java", "SQL"],
         photo: "photo_swami.jpg",
         reportingManager: "Rakhi",
@@ -69,7 +69,7 @@ export class AboutScriptComponent {
       },
       {
           name: "Meera Naik",
-          email: "meera@landigyr.com",
+          email: "meera@landisgyr.com",
           languages: ["Middleware"],
           photo: "photo_meera.jpg",
           reportingManager: "Rohan",
@@ -77,7 +77,7 @@ export class AboutScriptComponent {
       },
       {
         name: "Rohan K",
-        email: "rohan@landigyr.com",
+        email: "rohan@landisgyr.com",
         languages: ["C++", "Shell"],
         photo: "photo.jpg",
         reportingManager: "Abu Kareem",

@@ -1,5 +1,8 @@
 h2{
   color: rgb(8, 8, 11);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
@@ -36,4 +39,8 @@ p {
 }
 .credit-display span {
   margin-left: 5px;
+}
+
+.dev-details{
+  position: flex;
 }
