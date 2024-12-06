@@ -442,7 +442,7 @@ export class ViewScriptsComponent {
             isMandatory: true },
           { name: 'Server IP',
               description: 'IP address of server.',
-              value: 'ussmfedt160036.am.bm.net',
+              value: 'usiadidt002',
               isMandatory: true }
         ],
         hits: 122,
