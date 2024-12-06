@@ -3,13 +3,13 @@
 }
 
 <div class="table-container">
-  <h1 class="table-title">Scripts Available</h1>
+  <h1 class="table-title">Scripts</h1>
   <div class="optional">
   @if(userType === 'ADMIN'){
     <button class="add-script-button" (click)="enableUpload()">Register Script</button>
     <button class="audit-button" (click)="enableAudit()">Audit</button>
     <button class="review-button" (click)="enableReview()">Review</button>
-    <button class="add-server-button" (click)="registerServer()">Register Server</button>
+    <!-- <button class="add-server-button" (click)="registerServer()">Register Server</button> -->
     <button class="insights-button" (click)="insights()">Insights</button>
   }
 </div>

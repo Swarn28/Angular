@@ -21,6 +21,7 @@ export class UploadScriptComponent {
     id: 0,
     description: '',
     type: '',
+    tags: '',
     scriptName: '',
     arguments: 0,
     developers: [],

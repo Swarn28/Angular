@@ -79,9 +79,14 @@ export class ViewScriptsComponent {
         id: 6, scriptName: "Log_Archiever.ksh"
       },
       {
-        name: 'Add Two Numbers', description: 'Perform Addition', type: 'Python', status: 'Inactive',
+        name: 'Refresh Server', description: 'Refreshes the server', type: 'Python', status: 'Inactive',
         id: 7, scriptName: "add_num.py"
       },
+      {
+        name: 'Get Server Info', description: 'This script will return the java, MDMS version used on the server, also show the client name.', type: 'Python', status: 'Inactive',
+        id: 8, scriptName: "server_info.py"
+
+      }
     ];
   }
 
@@ -394,15 +399,15 @@ export class ViewScriptsComponent {
         lastModified: new Date("10-10-24").toISOString().split('T')[0],
       },
       {
-        name: 'Add Two Numbers',
+        name: 'Refresh Server',
         id: 7,
         userArguments: [
-          { name: 'First Number',
-            description: 'Enter First Number',
+          { name: 'First Server',
+            description: 'Enter First Server',
             value: '2',
             isMandatory: true },
-          { name: 'Second Number',
-            description: 'Enter Second Number',
+          { name: 'Second Server',
+            description: 'Enter Second Server',
             value: '3',
             isMandatory: true },
           { name: 'Server IP',
@@ -413,6 +418,36 @@ export class ViewScriptsComponent {
         hits: 152,
         rating: 5,
         likes: 21,
+        comments: [
+          {
+            commentBy: 'Deb',
+            comment: 'Great script for addition!',
+            date: new Date('2024-11-10T10:15:00Z').toISOString()
+          },
+          {
+            commentBy: 'Bake',
+            comment: 'Must use script',
+            date: new Date('2024-11-11T14:30:00Z').toISOString()
+          }
+        ],
+        developers: ["Rohan K","Shankar Jain"],
+        lastModified: new Date("10-10-24").toISOString().split('T')[0],
+      },{
+        name: 'Get Server Info',
+        id: 8,
+        userArguments: [
+          { name: 'outputPath',
+            description: 'Give output file name',
+            value: 'ServerInfo.txt',
+            isMandatory: true },
+          { name: 'Server IP',
+              description: 'IP address of server.',
+              value: 'ussmfedt160036.am.bm.net',
+              isMandatory: true }
+        ],
+        hits: 122,
+        rating: 3,
+        likes: 19,
         comments: [
           {
             commentBy: 'Deb',
