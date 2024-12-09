@@ -180,3 +180,8 @@ em{
   .like-button:hover {
     background-color: #450ec6;
   }
+
+  .fullDetails{
+    height: 100vh;
+    overflow: auto;
+  }

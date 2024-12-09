@@ -3,7 +3,6 @@
 }
 
 <div class="table-container">
-  <h1 class="table-title">Scripts</h1>
   <div class="optional">
   @if(userType === 'ADMIN'){
     <button class="add-script-button" (click)="enableUpload()">Register Script</button>
@@ -13,6 +12,8 @@
     <button class="insights-button" (click)="insights()">Insights</button>
   }
 </div>
+<h1 class="table-title">Scripts</h1>
+
   <table class="scripts-table">
     <thead>
       <tr>

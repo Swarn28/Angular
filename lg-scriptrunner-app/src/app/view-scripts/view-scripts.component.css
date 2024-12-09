@@ -2,7 +2,8 @@
 .table-container {
   margin: 20px;
   text-align: left;
-  width: 85%
+  width: 85%;
+  margin-top: 130px;
 }
 
 /* Title Styling */
@@ -12,7 +13,9 @@
   margin-bottom: 10px;
   color: #333;
   width: 65%;
-  margin-top: 150px;
+  height: 35px;
+  padding:5px;
+  padding-top: 20px;
 }
 
 /* Table Styling */
@@ -209,4 +212,21 @@ td {
 
 .insights-button:hover {
   background-color: #450ec6;
+}
+
+
+/* Align buttons using Flexbox */
+.optional {
+  display: flex;             /* Enable Flexbox layout */
+  flex-wrap: wrap;           /* Allow wrapping of buttons if needed */
+  justify-content: flex-start; /* Align buttons to the left */
+  align-items: flex-start;   /* Align buttons vertically to the top */
+  gap: 10px;                 /* Space between buttons */
+  margin: 20px 10px;         /* Set consistent margins */
+  position: static;
+}
+
+.optional button {
+  position: static;          /* Remove absolute positioning from buttons */
+  margin: 0;                 /* Reset margins for better alignment */
 }

@@ -10,6 +10,7 @@ h1{
 .main-container {
   align-items: center;
   width: 100%;
+  overflow: auto;
 }
 
 .about-script {
